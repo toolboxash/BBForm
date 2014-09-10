@@ -10,13 +10,13 @@
 Pod::Spec.new do |s|
   s.name             = "BBForm"
   s.version          = "0.1.0"
-  s.summary          = "A short description of BBForm."
-  s.description      = <<-DESC
-                       An optional longer description of BBForm
-
-                       * Markdown format.
-                       * Don't worry about the indent, we strip it!
-                       DESC
+  s.summary          = "A simple form solution for iOS with validation"
+#  s.description      = <<-DESC
+#                       An optional longer description of BBForm
+#
+#                       * Markdown format.
+#                       * Don't worry about the indent, we strip it!
+#                       DESC
   s.homepage         = "https://github.com/toolboxash/BBForm"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
