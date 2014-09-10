@@ -1,0 +1,10 @@
+target 'BBForm', :exclusive => true do
+  pod "BBForm", :path => "../"
+end
+
+target 'Tests', :exclusive => true do
+  pod "BBForm", :path => "../"
+
+  pod 'Specta', '~> 0.2.1'
+  pod 'Expecta'
+end
