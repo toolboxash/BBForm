@@ -36,16 +36,16 @@
 #pragma mark - Condition check
 
 
-- (BBConditionCollection *)checkConditions:(NSString *)string
+- (BBConditionCollection *)checkConditions:(BBFormElement *)element
 {
-    BBConditionCollection *violatedConditions = [super checkConditions: string];
+    BBConditionCollection *violatedConditions = [super checkConditions: element];
     
     // Check violated conditions of each composite validator
     if (violatedConditions == nil)
     {
         for (id<BBValidatorProtocol> validator in _validators)
         {
-            BBConditionCollection *checkedViolatedConditions = [validator checkConditions:string];
+            BBConditionCollection *checkedViolatedConditions = [validator checkConditions:element];
             if (checkedViolatedConditions != nil)
             {
                 if (violatedConditions == nil)

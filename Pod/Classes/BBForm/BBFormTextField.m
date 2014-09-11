@@ -93,6 +93,12 @@
         _textfield.keyboardType = UIKeyboardTypeEmailAddress;
         _textfield.autocapitalizationType = UITextAutocapitalizationTypeNone;
     }
+    else if (element.inputType == BBTextInputTypePassword)
+    {
+        _textfield.keyboardType = UIKeyboardTypeDefault;
+        _textfield.autocapitalizationType = UITextAutocapitalizationTypeNone;
+        _textfield.secureTextEntry = YES;
+    }
     else
     {
         _textfield.keyboardType = UIKeyboardTypeDefault;

@@ -14,7 +14,7 @@
 
 - (void)addCondition:(id <BBConditionProtocol>)condition;
 - (void)removeConditionOfClass:(Class <BBConditionProtocol>)conditionClass;
-- (BBConditionCollection *)checkConditions:(NSString *)string;
+- (BBConditionCollection *)checkConditions:(BBFormElement *)element;
 
 @end
 
