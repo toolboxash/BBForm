@@ -20,7 +20,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (instancetype)textInputElementWithID:(NSInteger)elementID placeholderText:(NSString *)placeholderText value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate
 {
-    BBFormTextFieldElement* element = [BBFormTextFieldElement new];
+    BBFormTextFieldElement* element = [[self alloc] init];
     element.elementID = elementID;
     element.delegate = delegate;
     element.placeholderText = placeholderText;

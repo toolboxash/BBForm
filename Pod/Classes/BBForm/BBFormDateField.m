@@ -17,7 +17,7 @@
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 + (id)datePickerElementWithID:(NSInteger)elementID labelText:(NSString *)labelText date:(NSDate *)date datePickerMode:(UIDatePickerMode)datePickerMode delegate:(id<BBFormElementDelegate>)delegate;
 {
-    BBFormDateFieldElement* element = [BBFormDateFieldElement new];
+    BBFormDateFieldElement* element = [[self alloc] init];
     element.elementID = elementID;
     element.labelText = labelText;
     element.date = date;
