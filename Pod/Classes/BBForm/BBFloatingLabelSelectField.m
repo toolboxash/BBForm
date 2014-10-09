@@ -60,6 +60,14 @@
     [super setPlaceholder:placeholder];
 }
 
+-(void)updateWithElement:(BBFormSelectFieldElement*)element
+{
+    [super updateWithElement:element];
+    if (self.valueLabel.text.length >0)
+    {
+        [self showFloatingLabel:NO];
+    }
+}
 
 #pragma mark -
 #pragma mark Picker view data source
