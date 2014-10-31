@@ -49,6 +49,14 @@
     [self layoutIfNeeded];
 }
 
+-(void)updateWithElement:(BBFormTextFieldElement*)element
+{
+    [super updateWithElement:element];
+    if (element.value.length >0)
+    {
+        [self showFloatingLabel:NO];
+    }
+}
 
 -(void)setText:(NSString *)text
 {

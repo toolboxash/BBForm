@@ -167,13 +167,6 @@
     {
         [(id<BBFormElementDelegate>)_element.delegate formElementDidChangeValue:_element];
     }
-
-    // call the bbdelegate to tell it weve changed
-    if ([_element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
-    {
-        [(id<BBFormElementDelegate>)_element.delegate formElementDidChangeValue:_element];
-    }
-    
 }
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;

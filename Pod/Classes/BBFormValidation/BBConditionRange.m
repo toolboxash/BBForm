@@ -1,6 +1,7 @@
 
 #import "BBConditionRange.h"
 #import "BBFormTextField.h"
+#import "BBFormSelectField.h"
 
 @implementation BBConditionRange
 
@@ -24,27 +25,34 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-    NSString *string = ((BBFormTextFieldElement*)element).value;
-    
-    BOOL success = NO;
-    
-    if (0 == _range.location
-        && 0 == _range.length)
-        success = YES;
-    
-    if (nil == string)
-        string = [NSString string];
-    
-    if(string.length >= _range.location && string.length <= _range.length)
+    if ([element isKindOfClass:[BBFormTextFieldElement class]])
     {
-        success = YES;
-    }
+        NSString *string = ((BBFormTextFieldElement*)element).value;
     
-    return success;
+        BOOL success = NO;
+        
+        if (0 == _range.location
+            && 0 == _range.length)
+            success = YES;
+        
+        if (nil == string)
+            string = [NSString string];
+        
+        if(string.length >= _range.location && string.length <= _range.length)
+        {
+            success = YES;
+        }
+        
+        return success;
+    }
+    else if ([element isKindOfClass:[BBFormSelectFieldElement class]])
+    {
+        NSInteger value = ((BBFormSelectFieldElement*)element).index;
+        return ((value >= _range.location) && (value <= (_range.location + _range.location)));
+    }
+        
+    return NO;
 }
-
 
 #pragma mark - Localization
 
