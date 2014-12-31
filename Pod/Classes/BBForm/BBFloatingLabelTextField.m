@@ -35,7 +35,8 @@
     [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
     floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     
-    [self.textfield autoRemoveConstraintsAffectingView];
+    [self.textfield removeFromSuperview];
+    [self addSubview:self.textfield];
     [self.textfield autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
     [self.textfield autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
     textFieldCenterConstraint = [self.textfield autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];

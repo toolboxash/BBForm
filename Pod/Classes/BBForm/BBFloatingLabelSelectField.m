@@ -37,14 +37,16 @@
     floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     
     // redo the value label constraints
-    [self.valueLabel autoRemoveConstraintsAffectingView];
+    [self.valueLabel removeFromSuperview];
+    [self addSubview:self.valueLabel];
     [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
     [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
     valueLabelCenterConstraint = [self.valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     self.valueLabel.textAlignment = NSTextAlignmentLeft;
     
     // reset contraints on placeholder label, and set the colour
-    [self.placeholderLabel autoRemoveConstraintsAffectingView];
+    [self.placeholderLabel removeFromSuperview];
+    [self addSubview:self.placeholderLabel];
     [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
     [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
     placeholderLabelCenterConstraint = [self.placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
