@@ -32,22 +32,61 @@
     _floatingLabel.alpha = 0.0f;
     [self addSubview:_floatingLabel];
     
-    [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
-    floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    self.contentInsets = UIEdgeInsetsMake(2, 10, 2, 10);
 
-    // redo the value label constraints
-    [self.valueLabel autoRemoveConstraintsAffectingView];
-    [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
-    [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
-    valueLabelCenterConstraint = [self.valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     self.valueLabel.textAlignment = NSTextAlignmentLeft;
     
-    // create a placeholder label.. same content as floating label but different style
-    [self.placeholderLabel autoRemoveConstraintsAffectingView];
-    [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
-    [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
-    placeholderLabelCenterConstraint = [self.placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    self.placeholderLabel.textColor = [[BBStyleSettings sharedInstance] unselectedColor];
 }
+
+
+- (void)setContentInsets:(UIEdgeInsets)contentInsets
+{
+    _contentInsets = contentInsets;
+    
+    floatingLabelCenterConstraint = nil;
+    placeholderLabelCenterConstraint = nil;
+    valueLabelCenterConstraint = nil;
+    
+    // remove and readd the views to delete the constraints
+    [self.floatingLabel removeFromSuperview];
+    [self.floatingLabel removeConstraints:self.floatingLabel.constraints];
+    [self addSubview:_floatingLabel];
+    
+    [self.placeholderLabel removeFromSuperview];
+    [self.placeholderLabel removeConstraints:self.placeholderLabel.constraints];
+    [self addSubview:self.placeholderLabel];
+    
+    [self.valueLabel removeFromSuperview];
+    [self.valueLabel removeConstraints:self.valueLabel.constraints];
+    [self addSubview:self.valueLabel];
+    
+    // ensure contraints get rebuilt
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)updateConstraints
+{
+    if (floatingLabelCenterConstraint == nil)
+    {
+        [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    }
+    if(valueLabelCenterConstraint == nil)
+    {
+        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        valueLabelCenterConstraint = [self.valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    }
+    if(placeholderLabelCenterConstraint == nil)
+    {
+        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        placeholderLabelCenterConstraint = [self.placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    }
+    [super updateConstraints];
+}
+
 
 
 -(void)setPlaceholder:(NSString *)placeholder
@@ -65,9 +104,11 @@
 // we dont have a hide label method cos currently its not possible to delete a date once weve set one
 - (void)showFloatingLabel:(BOOL)animated
 {
-    floatingLabelCenterConstraint.constant = -8.0f;
-    valueLabelCenterConstraint.constant = 12.0f;
-    placeholderLabelCenterConstraint.constant = 12.0f;
+    CGSize labelSize = [_floatingLabel intrinsicContentSize];
+    CGSize textSize = [self.valueLabel intrinsicContentSize];
+    floatingLabelCenterConstraint.constant = - ((self.bounds.size.height - labelSize.height) / 2.0f) + _contentInsets.top;
+    valueLabelCenterConstraint.constant = ((self.bounds.size.height - textSize.height) / 2.0f) - _contentInsets.bottom;
+    placeholderLabelCenterConstraint.constant = valueLabelCenterConstraint.constant;
     
     void (^showBlock)() = ^{
         self.floatingLabel.alpha = 1.0f;

@@ -8,7 +8,7 @@
 
 #import "BBFormSelectField.h"
 
-//IB_DESIGNABLE
+IB_DESIGNABLE
 
 @interface BBFloatingLabelSelectField : BBFormSelectField
 
@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) UILabel *placeholderLabel;
 @property (nonatomic, readonly) UILabel *valueLabel;
 
-@property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) IBInspectable NSString *placeholder;
 
 @property (nonatomic) UIEdgeInsets contentInsets;
 

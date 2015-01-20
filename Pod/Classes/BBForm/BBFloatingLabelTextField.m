@@ -38,10 +38,15 @@
 {
     _contentInsets = contentInsets;
 
+    floatingLabelCenterConstraint = nil;
+    textFieldCenterConstraint = nil;
+
     // remove and readd the views to delete the constraints
     [self.floatingLabel removeFromSuperview];
+    [self.floatingLabel removeConstraints:self.floatingLabel.constraints];
     [self addSubview:_floatingLabel];
     [self.textfield removeFromSuperview];
+    [self.textfield removeConstraints:self.textfield.constraints];
     [self addSubview:self.textfield];
     
     // ensure contraints get rebuilt

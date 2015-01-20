@@ -36,10 +36,32 @@
 
     self.valueLabel.textAlignment = NSTextAlignmentLeft;
     
-    // reset contraints on placeholder label, and set the colour
+    self.placeholderLabel.textColor = [[BBStyleSettings sharedInstance] unselectedColor];    
+}
 
-    self.placeholderLabel.textColor = [[BBStyleSettings sharedInstance] unselectedColor];
+- (void)setContentInsets:(UIEdgeInsets)contentInsets
+{
+    _contentInsets = contentInsets;
     
+    floatingLabelCenterConstraint = nil;
+    placeholderLabelCenterConstraint = nil;
+    valueLabelCenterConstraint = nil;
+
+    // remove and readd the views to delete the constraints
+    [self.floatingLabel removeFromSuperview];
+    [self.floatingLabel removeConstraints:self.floatingLabel.constraints];
+    [self addSubview:_floatingLabel];
+    
+    [self.placeholderLabel removeFromSuperview];
+    [self.placeholderLabel removeConstraints:self.placeholderLabel.constraints];
+    [self addSubview:self.placeholderLabel];
+    
+    [self.valueLabel removeFromSuperview];
+    [self.valueLabel removeConstraints:self.valueLabel.constraints];
+    [self addSubview:self.valueLabel];
+    
+    // ensure contraints get rebuilt
+    [self setNeedsUpdateConstraints];
 }
 
 - (void)updateConstraints
@@ -53,33 +75,19 @@
     {
         [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
         [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
-        valueLabelCenterConstraint = [self.textfield autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+        valueLabelCenterConstraint = [self.valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
     if(placeholderLabelCenterConstraint == nil)
     {
         [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
         [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
-        placeholderLabelCenterConstraint = [self.textfield autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+        placeholderLabelCenterConstraint = [self.placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
     [super updateConstraints];
 }
 
 
-- (void)setContentInsets:(UIEdgeInsets)contentInsets
-{
-    _contentInsets = contentInsets;
-    
-    // remove and readd the views to delete the constraints
-    [self.floatingLabel removeFromSuperview];
-    [self addSubview:_floatingLabel];
-    [self.textfield removeFromSuperview];
-    [self addSubview:self.textfield];
-    [self.valueLabel removeFromSuperview];
-    [self addSubview:self.valueLabel];
-        
-    // ensure contraints get rebuilt
-    [self setNeedsUpdateConstraints];
-}
+
 
 -(void)setPlaceholder:(NSString *)placeholder
 {

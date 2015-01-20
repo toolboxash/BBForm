@@ -8,7 +8,7 @@
 
 #import "BBFormDateField.h"
 
-//IB_DESIGNABLE
+IB_DESIGNABLE
 
 @interface BBFloatingLabelDateField : BBFormDateField
 
@@ -16,7 +16,9 @@
 @property (nonatomic, readonly) UILabel *placeholderLabel;
 @property (nonatomic, readonly) UILabel *valueLabel;
 
-@property (nonatomic) /*IBInspectable*/ NSString *placeholder;
-@property (nonatomic) /*IBInspectable*/ NSInteger datePickerMode;
+@property (nonatomic) IBInspectable NSString *placeholder;
+@property (nonatomic) IBInspectable NSInteger datePickerMode;
+
+@property (nonatomic) UIEdgeInsets contentInsets;
 
 @end

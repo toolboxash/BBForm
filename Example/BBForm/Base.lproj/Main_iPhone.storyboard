@@ -18,8 +18,8 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Iv-c9-yMu" customClass="BBFloatingLabelTextField">
-                                <rect key="frame" x="20" y="20" width="280" height="40"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="20" y="40" width="280" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="t18-95-FLu"/>
                                     <constraint firstAttribute="width" constant="280" id="xeH-gm-2KF"/>
@@ -34,13 +34,56 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Placeholder"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QVk-WC-fJO" customClass="BBFloatingLabelSelectField">
+                                <rect key="frame" x="20" y="100" width="280" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="280" id="MY6-ae-6Yd"/>
+                                    <constraint firstAttribute="height" constant="40" id="fgq-UE-j7j"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Select a value"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="28J-2G-fFh" customClass="BBFloatingLabelDateField">
+                                <rect key="frame" x="20" y="160" width="280" height="40"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="8tL-T5-dWJ"/>
+                                    <constraint firstAttribute="width" constant="280" id="a2r-jY-ZHi"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="7Iv-c9-yMu" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="9Kw-xn-1MR"/>
+                            <constraint firstItem="7Iv-c9-yMu" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="20" id="9Kw-xn-1MR"/>
+                            <constraint firstItem="28J-2G-fFh" firstAttribute="centerX" secondItem="QVk-WC-fJO" secondAttribute="centerX" id="Mby-KI-cqB"/>
+                            <constraint firstItem="28J-2G-fFh" firstAttribute="top" secondItem="QVk-WC-fJO" secondAttribute="bottom" constant="20" id="Tal-zQ-ETj"/>
+                            <constraint firstItem="QVk-WC-fJO" firstAttribute="top" secondItem="7Iv-c9-yMu" secondAttribute="bottom" constant="20" id="Zrw-SF-X3T"/>
+                            <constraint firstItem="7Iv-c9-yMu" firstAttribute="centerX" secondItem="QVk-WC-fJO" secondAttribute="centerX" id="dgZ-zl-6NA"/>
                             <constraint firstAttribute="centerX" secondItem="7Iv-c9-yMu" secondAttribute="centerX" id="kZh-lY-Af0"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="dateField" destination="28J-2G-fFh" id="ZON-gz-4Rt"/>
+                        <outlet property="selectField" destination="QVk-WC-fJO" id="MZl-Pi-buy"/>
+                        <outlet property="textField" destination="7Iv-c9-yMu" id="aRX-Ju-hKJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>

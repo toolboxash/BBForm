@@ -1,5 +1,6 @@
 target 'BBForm', :exclusive => true do
   pod "BBForm", :path => "../"
+  pod 'Reveal-iOS-SDK'
 end
 
 target 'Tests', :exclusive => true do
