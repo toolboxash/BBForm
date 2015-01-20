@@ -10,13 +10,14 @@
 #import "BBStyleView.h"
 #import "BBFormTextField.h"
 
-//IB_DESIGNABLE
+IB_DESIGNABLE
 
 @interface BBFloatingLabelTextField : BBFormTextField
 
 @property (nonatomic, readonly) UILabel *floatingLabel;
 
-@property (nonatomic) /*IBInspectable*/ NSString *text;
-@property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) IBInspectable NSString *text;
+@property (nonatomic) IBInspectable NSString *placeholder;
+@property (nonatomic) UIEdgeInsets contentInsets;
 
 @end
