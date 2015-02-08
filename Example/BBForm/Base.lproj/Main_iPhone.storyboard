@@ -232,7 +232,7 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrP-cA-E66" customClass="BBFloatingLabelDateField">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrP-cA-E66" customClass="BBFormTextView">
                                         <rect key="frame" x="20" y="303" width="280" height="120"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
