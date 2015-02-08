@@ -18,18 +18,25 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-+ (instancetype)textViewElementWithID:(NSInteger)elementID value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
++ (instancetype)textViewElementWithID:(NSInteger)elementID placeholderText:(NSString *)placeholderText value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
 {
     BBFormTextViewElement* element = [[self alloc] init];
     element.elementID = elementID;
     element.delegate = delegate;
     element.value = value;
+    element.placeholderText = placeholderText;
     element.originalValue = value;
     return element;
 }
 
 @end
 
+
+@interface BBFormTextView ()
+
+@property (nonatomic, readwrite) UILabel *placeholderLabel;
+
+@end
 
 
 @implementation BBFormTextView
@@ -38,6 +45,10 @@
 {
     [super setup];
     
+    _placeholderLabel = [[UILabel alloc] initWithFrame:self.bounds];
+    _placeholderLabel.font = [BBStyleSettings sharedInstance].h1Font;
+    _placeholderLabel.textColor = [[BBStyleSettings sharedInstance] unselectedColor];
+
     _textview = [[UITextView alloc] initWithFrame:self.bounds];
     _textview.font = [BBStyleSettings sharedInstance].h1Font;
     _textview.delegate = self;
@@ -65,6 +76,10 @@
     [_textview removeFromSuperview];
     [_textview removeConstraints:_textview.constraints];
     [self addSubview:_textview];
+
+    [_placeholderLabel removeFromSuperview];
+    [_placeholderLabel removeConstraints:_placeholderLabel.constraints];
+    [self addSubview:_placeholderLabel];
     
     // ensure contraints get rebuilt
     [self setNeedsUpdateConstraints];
@@ -76,6 +91,11 @@
     {
         [_textview autoPinEdgesToSuperviewEdgesWithInsets:_contentInsets];
     }
+    if (![self hasConstraintsForView:_placeholderLabel])
+    {
+        [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:_contentInsets.top];
+    }
     [super updateConstraints];
 }
 
@@ -84,6 +104,7 @@
 {
     self.element = element;
     self.text = element.value;
+    self.placeholder = element.placeholderText;
 }
 
 - (BOOL)canBecomeFirstResponder
@@ -108,6 +129,13 @@
     [self layoutIfNeeded];
 }
 
+- (void)setPlaceholder:(NSString *)placeholder
+{
+    _placeholderLabel.text = placeholder;
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -117,7 +145,8 @@
 -(void)textViewDidChange:(UITextView *)textView
 {
     // call the delegate to inform of value changed
-    self.element.value = textView.text;
+    self.element.value = textView.text;    
+    self.placeholderLabel.hidden = (_textview.text.length >0);
     if ([self.element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
     {
         [(id<BBFormElementDelegate>)self.element.delegate formElementDidChangeValue:self.element];

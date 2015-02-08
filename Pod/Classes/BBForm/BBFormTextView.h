@@ -11,10 +11,11 @@
 
 @interface BBFormTextViewElement : BBFormElement
 
-+ (instancetype)textViewElementWithID:(NSInteger)elementID value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
++ (instancetype)textViewElementWithID:(NSInteger)elementID placeholderText:(NSString *)placeholderText value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
 
 @property (nonatomic, copy) NSString* value;
 @property (nonatomic, copy) NSString* originalValue;
+@property (nonatomic, copy) NSString* placeholderText;
 
 @end
 
