@@ -10,16 +10,20 @@
 #import "BBFormDateField.h"
 #import "BBFormSelectField.h"
 #import "BBFormTextField.h"
+#import "BBFormTextView.h"
 
 @interface BBNonFloatingExamplesViewController () <BBFormElementDelegate>
 {
     BBFormTextFieldElement *textFieldElement;
     BBFormSelectFieldElement *selectFieldElement;
     BBFormDateFieldElement *dateFieldElement;
+    BBFormTextViewElement *textViewElement;
 }
+
 @property (nonatomic, strong) IBOutlet BBFormDateField *dateField;
 @property (nonatomic, strong) IBOutlet BBFormSelectField *selectField;
 @property (nonatomic, strong) IBOutlet BBFormTextField *textField;
+@property (nonatomic, strong) IBOutlet BBFormTextView *textView;
 
 @end
 
@@ -32,10 +36,12 @@
     textFieldElement = [BBFormTextFieldElement textInputElementWithID:0 placeholderText:@"Question" value:nil delegate:self];
     selectFieldElement = [BBFormSelectFieldElement selectElementWithID:1 labelText:@"Select Option" values:@[@"1 minute",@"5 minutes",@"15 minutes",@"1 hour"] delegate:self];
     dateFieldElement = [BBFormDateFieldElement datePickerElementWithID:2 labelText:@"Enter a date" date:nil datePickerMode:UIDatePickerModeDate delegate:nil];
-    
+    textViewElement = [BBFormTextViewElement textViewElementWithID:3 value:nil delegate:nil];
+
     [_textField updateWithElement:textFieldElement];
     [_selectField updateWithElement:selectFieldElement];
     [_dateField updateWithElement:dateFieldElement];
+    [_textView updateWithElement:textViewElement];
     
     // we should add some validations to show how that works too..
 }

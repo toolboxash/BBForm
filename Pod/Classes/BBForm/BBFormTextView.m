@@ -18,12 +18,11 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
-+ (instancetype)textViewElementWithID:(NSInteger)elementID placeholderText:(NSString *)placeholderText value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
++ (instancetype)textViewElementWithID:(NSInteger)elementID value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
 {
     BBFormTextViewElement* element = [[self alloc] init];
     element.elementID = elementID;
     element.delegate = delegate;
-    element.placeholderText = placeholderText;
     element.value = value;
     element.originalValue = value;
     return element;
@@ -42,8 +41,10 @@
     _textview = [[UITextView alloc] initWithFrame:self.bounds];
     _textview.font = [BBStyleSettings sharedInstance].h1Font;
     _textview.delegate = self;
+    _textview.textContainerInset = UIEdgeInsetsZero;
+    _textview.textContainer.lineFragmentPadding = 0;
     
-    self.contentInsets = UIEdgeInsetsMake(2, 10, 2, 10);
+    self.contentInsets = UIEdgeInsetsMake(10, 10, 10, 10);
     
     // here we should use a defined style not colour..
     self.backgroundColor = [UIColor whiteColor];
@@ -82,15 +83,7 @@
 -(void)updateWithElement:(BBFormTextViewElement*)element
 {
     self.element = element;
-    self.placeholder = element.placeholderText;
     self.text = element.value;
-}
-
-- (void)setPlaceholder:(NSString *)placeholder
-{
-//    [_textfield setPlaceholder:placeholder];
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
 }
 
 - (BOOL)canBecomeFirstResponder
