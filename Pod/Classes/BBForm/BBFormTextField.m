@@ -11,6 +11,7 @@
 #import "BBStyleSettings.h"
 #import "PureLayout.h"
 #import "PureLayoutDefines.h"
+#import "BBExtras-UIView.h"
 
 
 
@@ -65,19 +66,42 @@
     [_textfield addTarget:self action:@selector(textFieldDidChange) forControlEvents:UIControlEventEditingChanged];
     _textfield.font = [BBStyleSettings sharedInstance].h1Font;
     _textfield.delegate = self;
-    [self addSubview:_textfield];
     
-    [_textfield autoPinEdgesToSuperviewEdgesWithInsets:UIEdgeInsetsMake(0,0,0,0)];
-    
+    self.contentInsets = UIEdgeInsetsMake(2, 10, 2, 10);
+
     // here we should use a defined style not colour..
     self.backgroundColor = [UIColor whiteColor];
     self.layer.borderColor = [[BBStyleSettings sharedInstance] seperatorColor].CGColor;
 }
 
+
 -(void)dealloc
 {
     [self resignFirstResponder];
 }
+
+- (void)setContentInsets:(UIEdgeInsets)contentInsets
+{
+    _contentInsets = contentInsets;
+    
+    // remove and readd the views to delete the constraints
+    [self.textfield removeFromSuperview];
+    [self.textfield removeConstraints:self.textfield.constraints];
+    [self addSubview:self.textfield];
+    
+    // ensure contraints get rebuilt
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)updateConstraints
+{
+    if (![self hasConstraintsForView:_textfield])
+    {
+        [_textfield autoPinEdgesToSuperviewEdgesWithInsets:_contentInsets];
+    }
+    [super updateConstraints];
+}
+
 
 -(void)updateWithElement:(BBFormTextFieldElement*)element
 {

@@ -40,6 +40,7 @@ typedef enum {
 @property (nonatomic, readonly) UITextField *textfield;
 @property (nonatomic) /*IBInspectable*/ NSString *text;
 @property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) UIEdgeInsets contentInsets;
 
 -(void)textFieldDidChange;
 -(void)updateWithElement:(BBFormTextFieldElement*)element;

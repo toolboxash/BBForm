@@ -36,6 +36,7 @@
 @property (nonatomic, readonly) UIDatePicker *datePicker;
 
 @property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) UIEdgeInsets contentInsets;
 
 -(void)selectedDateDidChange;
 -(void)updateWithElement:(BBFormDateFieldElement*)element;

@@ -19,6 +19,4 @@
 @property (nonatomic) /*IBInspectable*/ NSString *placeholder;
 @property (nonatomic) /*IBInspectable*/ NSInteger datePickerMode;
 
-@property (nonatomic) UIEdgeInsets contentInsets;
-
 @end

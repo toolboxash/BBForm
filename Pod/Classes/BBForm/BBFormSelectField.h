@@ -32,6 +32,7 @@
 @property (nonatomic, readonly) UIPickerView *pickerView;
 
 @property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) UIEdgeInsets contentInsets;
 
 -(void)updateWithElement:(BBFormSelectFieldElement*)element;
 

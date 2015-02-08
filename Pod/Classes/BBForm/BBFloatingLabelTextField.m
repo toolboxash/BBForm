@@ -10,6 +10,7 @@
 #import "BBStyleSettings.h"
 #import "PureLayout.h"
 #import "PureLayoutDefines.h"
+#import "BBExtras-UIView.h"
 
 @interface BBFloatingLabelTextField ()
 {
@@ -25,18 +26,16 @@
 
 -(void)setup
 {
-    [super setup];
-    
     _floatingLabel = [[UILabel alloc] initWithFrame:self.bounds];
     _floatingLabel.font = [BBStyleSettings sharedInstance].h2Font;
     _floatingLabel.alpha = 0.0f;
-    
-    self.contentInsets = UIEdgeInsetsMake(2, 10, 2, 10);
+
+    [super setup];
 }
 
 - (void)setContentInsets:(UIEdgeInsets)contentInsets
 {
-    _contentInsets = contentInsets;
+    [super setContentInsets:contentInsets];
 
     floatingLabelCenterConstraint = nil;
     textFieldCenterConstraint = nil;
@@ -45,25 +44,19 @@
     [self.floatingLabel removeFromSuperview];
     [self.floatingLabel removeConstraints:self.floatingLabel.constraints];
     [self addSubview:_floatingLabel];
-    [self.textfield removeFromSuperview];
-    [self.textfield removeConstraints:self.textfield.constraints];
-    [self addSubview:self.textfield];
-    
-    // ensure contraints get rebuilt
-    [self setNeedsUpdateConstraints];
 }
 
 - (void)updateConstraints
 {
-    if (floatingLabelCenterConstraint == nil)
+    if (![self hasConstraintsForView:_floatingLabel])
     {
-        [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
         floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
-    if(textFieldCenterConstraint == nil)
+    if (![self hasConstraintsForView:self.textfield])
     {
-        [self.textfield autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
-        [self.textfield autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        [self.textfield autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
+        [self.textfield autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:self.contentInsets.right];
         textFieldCenterConstraint = [self.textfield autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
     [super updateConstraints];
@@ -115,8 +108,8 @@
     // calculate the offset
     CGSize labelSize = [_floatingLabel intrinsicContentSize];
     CGSize textSize = [self.textfield intrinsicContentSize];
-    floatingLabelCenterConstraint.constant = - ((self.bounds.size.height - labelSize.height) / 2.0f) + _contentInsets.top;
-    textFieldCenterConstraint.constant = ((self.bounds.size.height - textSize.height) / 2.0f) - _contentInsets.bottom;
+    floatingLabelCenterConstraint.constant = - ((self.bounds.size.height - labelSize.height) / 2.0f) + self.contentInsets.top;
+    textFieldCenterConstraint.constant = ((self.bounds.size.height - textSize.height) / 2.0f) - self.contentInsets.bottom;
     
     void (^showBlock)() = ^{
         _floatingLabel.alpha = 1.0f;

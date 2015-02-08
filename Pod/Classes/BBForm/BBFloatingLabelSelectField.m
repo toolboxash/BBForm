@@ -10,6 +10,7 @@
 #import "BBStyleSettings.h"
 #import "PureLayout.h"
 #import "PureLayoutDefines.h"
+#import "BBExtras-UIView.h"
 
 @interface BBFloatingLabelSelectField ()
 {
@@ -25,68 +26,55 @@
 
 -(void)setup
 {
-    [super setup];
-    
-    // create the floating label
+    // create the additional floating label
     _floatingLabel = [[UILabel alloc] initWithFrame:self.bounds];
     _floatingLabel.font = [BBStyleSettings sharedInstance].h2Font;
     _floatingLabel.alpha = 0.0f;
     
-    self.contentInsets = UIEdgeInsetsMake(2, 10, 2, 10);
-
-    self.valueLabel.textAlignment = NSTextAlignmentLeft;
+    [super setup];
     
-    self.placeholderLabel.textColor = [[BBStyleSettings sharedInstance] unselectedColor];    
+    self.valueLabel.textAlignment = NSTextAlignmentLeft;
+    self.valueLabel.alpha = 0.0f;
+    self.placeholderLabel.textColor = [[BBStyleSettings sharedInstance] unselectedColor];
 }
 
 - (void)setContentInsets:(UIEdgeInsets)contentInsets
 {
-    _contentInsets = contentInsets;
+    [super setContentInsets:contentInsets];
     
     floatingLabelCenterConstraint = nil;
     placeholderLabelCenterConstraint = nil;
     valueLabelCenterConstraint = nil;
-
+    
     // remove and readd the views to delete the constraints
-    [self.floatingLabel removeFromSuperview];
-    [self.floatingLabel removeConstraints:self.floatingLabel.constraints];
+    [_floatingLabel removeFromSuperview];
+    [_floatingLabel removeConstraints:_floatingLabel.constraints];
     [self addSubview:_floatingLabel];
-    
-    [self.placeholderLabel removeFromSuperview];
-    [self.placeholderLabel removeConstraints:self.placeholderLabel.constraints];
-    [self addSubview:self.placeholderLabel];
-    
-    [self.valueLabel removeFromSuperview];
-    [self.valueLabel removeConstraints:self.valueLabel.constraints];
-    [self addSubview:self.valueLabel];
-    
-    // ensure contraints get rebuilt
-    [self setNeedsUpdateConstraints];
 }
 
 - (void)updateConstraints
 {
-    if (floatingLabelCenterConstraint == nil)
+    if (![self hasConstraintsForView:_floatingLabel])
     {
-        [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
         floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
-    if(valueLabelCenterConstraint == nil)
+    
+    if (![self hasConstraintsForView:self.valueLabel])
     {
-        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
-        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
+        [self.valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:self.contentInsets.right];
         valueLabelCenterConstraint = [self.valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
-    if(placeholderLabelCenterConstraint == nil)
+    
+    if (![self hasConstraintsForView:self.placeholderLabel])
     {
-        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
-        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
+        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:self.contentInsets.right];
         placeholderLabelCenterConstraint = [self.placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     }
     [super updateConstraints];
 }
-
-
 
 
 -(void)setPlaceholder:(NSString *)placeholder
@@ -120,8 +108,8 @@
 {
     CGSize labelSize = [_floatingLabel intrinsicContentSize];
     CGSize textSize = [self.valueLabel intrinsicContentSize];
-    floatingLabelCenterConstraint.constant = - ((self.bounds.size.height - labelSize.height) / 2.0f) + _contentInsets.top;
-    valueLabelCenterConstraint.constant = ((self.bounds.size.height - textSize.height) / 2.0f) - _contentInsets.bottom;
+    floatingLabelCenterConstraint.constant = - ((self.bounds.size.height - labelSize.height) / 2.0f) + self.contentInsets.top;
+    valueLabelCenterConstraint.constant = ((self.bounds.size.height - textSize.height) / 2.0f) - self.contentInsets.bottom;
     placeholderLabelCenterConstraint.constant = valueLabelCenterConstraint.constant;
 
     void (^showBlock)() = ^{

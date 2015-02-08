@@ -10,7 +10,7 @@
 
 // would be agood to add some categories to UIVIew, UILabel etc that support a style name field so we can set "h1Font" in interfacebuilder
 
-//IB_DESIGNABLE
+//cdIB_DESIGNABLE
 
 @interface BBStyleView : UIView
 

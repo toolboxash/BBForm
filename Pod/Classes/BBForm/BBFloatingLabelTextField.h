@@ -18,6 +18,5 @@
 
 @property (nonatomic) /*IBInspectable*/ NSString *text;
 @property (nonatomic) /*IBInspectable*/ NSString *placeholder;
-@property (nonatomic) UIEdgeInsets contentInsets;
 
 @end

@@ -10,6 +10,7 @@
 #import "BBStyleSettings.h"
 #import "PureLayout.h"
 #import "PureLayoutDefines.h"
+#import "BBExtras-UIView.h"
 
 @implementation BBFormSelectFieldElement
 
@@ -57,34 +58,25 @@
     // create the value label
     _valueLabel = [[UILabel alloc] initWithFrame:self.bounds];
     _valueLabel.font = [BBStyleSettings sharedInstance].h1Font;
-    _valueLabel.alpha = 0.0f;
-    [self addSubview:_valueLabel];
-    
-    [_valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
-    [_valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
-    [_valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
     _valueLabel.textAlignment = NSTextAlignmentRight;
     
     // create a placeholder label.. same content as floating label but different style
     _placeholderLabel = [[UILabel alloc] initWithFrame:self.bounds];
     _placeholderLabel.font = [BBStyleSettings sharedInstance].h1Font;
-    [self addSubview:_placeholderLabel];
+    _placeholderLabel.textAlignment = NSTextAlignmentLeft;
     
-    [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:10];
-    [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:10];
-    [_placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
-    _valueLabel.textAlignment = NSTextAlignmentLeft;
-    
-    // hidden textfield to trigger the datepicker...
+    // hidden textfield to trigger the picker...
     _pickerView = [[UIPickerView alloc] init];
     _pickerView.delegate = self;
     _pickerView.showsSelectionIndicator = YES;
-    
+
     _textfield = [[UITextField alloc] initWithFrame:self.bounds];
     _textfield.hidden = YES;
     [_textfield setInputView:_pickerView];
     [self addSubview:_textfield];
-    
+
+    self.contentInsets = UIEdgeInsetsMake(2, 10, 2, 10);
+
     // here we should use a defined style not colour..
     self.backgroundColor = [UIColor whiteColor];
     self.layer.borderColor = [[BBStyleSettings sharedInstance] seperatorColor].CGColor;
@@ -92,6 +84,41 @@
     insideTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapInside:)];
     [self addGestureRecognizer:insideTapGestureRecognizer];
     outsideTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTapOutside:)];
+}
+
+- (void)setContentInsets:(UIEdgeInsets)contentInsets
+{
+    _contentInsets = contentInsets;
+    
+    [_placeholderLabel removeFromSuperview];
+    [_placeholderLabel removeConstraints:_placeholderLabel.constraints];
+    [self addSubview:_placeholderLabel];
+    
+    [_valueLabel removeFromSuperview];
+    [_valueLabel removeConstraints:_valueLabel.constraints];
+    [self addSubview:_valueLabel];
+    
+    // ensure contraints get rebuilt
+    [self setNeedsUpdateConstraints];
+}
+
+- (void)updateConstraints
+{
+    if (![self hasConstraintsForView:_valueLabel])
+    {
+        [_valueLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [_valueLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        [_valueLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    }
+    
+    if (![self hasConstraintsForView:_placeholderLabel])
+    {
+        [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:_contentInsets.left];
+        [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeRight withInset:_contentInsets.right];
+        [_placeholderLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self withOffset:0];
+    }
+    
+    [super updateConstraints];
 }
 
 -(void)dealloc
