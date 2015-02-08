@@ -16,4 +16,19 @@ FOUNDATION_EXPORT const unsigned char BBFormVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <BBForm/PublicHeader.h>
 
+// form fields
+#import "BBFloatingLabelTextField.h"
+#import "BBFloatingLabelDateField.h"
+#import "BBFloatingLabelSelectField.h"
+
+// style helpers
+#import "BBStyleButton.h"
+#import "BBStyleView.h"
+#import "BBStyleSettings.h"
+
+// extras and utilities
+#import "BBExtras-UIActionSheet.h"
+#import "BBExtras-UIAlertView.h"
+#import "BBExtras-UIColor.h"
+#import "BBExtras-UIImage.h"
 
