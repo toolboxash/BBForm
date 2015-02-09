@@ -25,6 +25,7 @@
 @property (nonatomic, strong) BBFormTextViewElement* element;
 
 @property (nonatomic, readonly) UITextView *textview;
+@property (nonatomic, readonly) UILabel *placeholderLabel;
 @property (nonatomic) /*IBInspectable*/ NSString *text;
 @property (nonatomic) /*IBInspectable*/ NSString *placeholder;
 @property (nonatomic) UIEdgeInsets contentInsets;

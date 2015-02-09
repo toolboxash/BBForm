@@ -34,8 +34,6 @@
 
 @interface BBFormTextView ()
 
-@property (nonatomic, readwrite) UILabel *placeholderLabel;
-
 @end
 
 

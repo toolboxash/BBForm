@@ -14,7 +14,9 @@
 
 @interface BBFloatingLabelTextView ()
 {
-    NSLayoutConstraint *placeholderLabelCenterConstraint;
+    NSLayoutConstraint *placeholderLabelTopConstraint;
+    NSLayoutConstraint *textviewTopConstraint;
+    NSLayoutConstraint *floatingLabelCenterConstraint;
 }
 
 
@@ -24,6 +26,12 @@
 
 -(void)setup
 {
+    // create the additional floating label
+    _floatingLabel = [[UILabel alloc] initWithFrame:self.bounds];
+    _floatingLabel.font = [BBStyleSettings sharedInstance].h2Font;
+    _floatingLabel.alpha = 0.0f;
+    
+    _floatingLabelOffset = 18.0f;
     [super setup];
 }
 
@@ -31,41 +39,55 @@
 {
     [super setContentInsets:contentInsets];
     
-//    floatingLabelCenterConstraint = nil;
-//    textFieldCenterConstraint = nil;
+    floatingLabelCenterConstraint = nil;
+    placeholderLabelTopConstraint = nil;
+    textviewTopConstraint = nil;
+//    valueLabelCenterConstraint = nil;
     
     // remove and readd the views to delete the constraints
-//    [self.floatingLabel removeFromSuperview];
-//    [self.floatingLabel removeConstraints:self.floatingLabel.constraints];
-//    [self addSubview:_floatingLabel];
+    [_floatingLabel removeFromSuperview];
+    [_floatingLabel removeConstraints:_floatingLabel.constraints];
+    [self addSubview:_floatingLabel];
 }
-/*
+
+
+
 - (void)updateConstraints
 {
-    if (![self hasConstraintsForView:_placeholderLabel])
+    if (![self hasConstraintsForView:self.textview])
     {
-        [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
-        [_placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:self.contentInsets.top];
+        textviewTopConstraint = [self.textview autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:self.contentInsets.top];
+        [self.textview autoPinEdgeToSuperviewEdge:ALEdgeLeading withInset:self.contentInsets.left];
+        [self.textview autoPinEdgeToSuperviewEdge:ALEdgeBottom withInset:self.contentInsets.bottom];
+        [self.textview autoPinEdgeToSuperviewEdge:ALEdgeTrailing withInset:self.contentInsets.right];
     }
+    if (![self hasConstraintsForView:self.placeholderLabel])
+    {
+        [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
+        placeholderLabelTopConstraint = [self.placeholderLabel autoPinEdgeToSuperviewEdge:ALEdgeTop withInset:self.contentInsets.top];
+    }
+    if (![self hasConstraintsForView:_floatingLabel])
+    {
+        [_floatingLabel autoPinEdgeToSuperviewEdge:ALEdgeLeft withInset:self.contentInsets.left];
+        floatingLabelCenterConstraint = [_floatingLabel autoAlignAxis:ALAxisHorizontal toSameAxisOfView:self.placeholderLabel withOffset:0];
+    }
+
     [super updateConstraints];
 }
 
-- (void)setPlaceholder:(NSString *)placeholder
+-(void)setPlaceholder:(NSString *)placeholder
 {
-    _placeholderLabel.text = placeholder;
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
+    _floatingLabel.text = placeholder;
+    [super setPlaceholder:placeholder];
 }
-*/
-/*
--(void)textFieldDidChange {
-    [super textFieldDidChange];
+
+-(void)textViewDidChange:(UITextView *)textView
+{
+    // call the delegate to inform of value changed
+    self.element.value = textView.text;
     
-    // whatever you wanted to do
-    BOOL firstResponder = self.textfield.isFirstResponder;
-    //        _floatingLabel.textColor = (firstResponder && self.text && self.text.length > 0 ? self.getLabelActiveColor : self.floatingLabelTextColor);
-    
-    if (!self.textfield.text || 0 == [self.textfield.text length])
+    BOOL firstResponder = self.textview.isFirstResponder;
+    if (!self.textview.text || 0 == [self.textview.text length])
     {
         [self hideFloatingLabel:firstResponder];
     }
@@ -73,18 +95,23 @@
     {
         [self showFloatingLabel:firstResponder];
     }
+    
+    if ([self.element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
+    {
+        [(id<BBFormElementDelegate>)self.element.delegate formElementDidChangeValue:self.element];
+    }
 }
 
 - (void)showFloatingLabel:(BOOL)animated
 {
     // calculate the offset
-    CGSize labelSize = [_floatingLabel intrinsicContentSize];
-    CGSize textSize = [self.textfield intrinsicContentSize];
-    floatingLabelCenterConstraint.constant = - ((self.bounds.size.height - labelSize.height) / 2.0f) + self.contentInsets.top;
-    textFieldCenterConstraint.constant = ((self.bounds.size.height - textSize.height) / 2.0f) - self.contentInsets.bottom;
+    floatingLabelCenterConstraint.constant = - self.floatingLabelOffset;
+    placeholderLabelTopConstraint.constant = self.contentInsets.top + (self.floatingLabelOffset / 2.0f);
+    textviewTopConstraint.constant = self.contentInsets.top + (self.floatingLabelOffset / 2.0f);
     
     void (^showBlock)() = ^{
         _floatingLabel.alpha = 1.0f;
+        self.placeholderLabel.alpha = 0.0f;
         [self layoutIfNeeded];
     };
     
@@ -104,10 +131,13 @@
 
 - (void)hideFloatingLabel:(BOOL)animated
 {
-    floatingLabelCenterConstraint.constant = 0.0f;
-    textFieldCenterConstraint.constant = 0.0f;
+    floatingLabelCenterConstraint.constant = 0;
+    placeholderLabelTopConstraint.constant = self.contentInsets.top;
+    textviewTopConstraint.constant = self.contentInsets.top;
+    
     void (^hideBlock)() = ^{
         _floatingLabel.alpha = 0.0f;
+        self.placeholderLabel.alpha = 1.0f;
         [self layoutIfNeeded];
     };
     
@@ -124,5 +154,5 @@
         hideBlock();
     }
 }
-*/
+
 @end

@@ -10,4 +10,7 @@
 
 @interface BBFloatingLabelTextView : BBFormTextView
 
+@property (nonatomic) CGFloat floatingLabelOffset;
+@property (nonatomic, readonly) UILabel *floatingLabel;
+
 @end
