@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
@@ -145,15 +145,35 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ1-T9-VOe" customClass="BBFormAutoCompleteField">
+                                        <rect key="frame" x="20" y="437" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="CX8-In-SUq"/>
+                                            <constraint firstAttribute="height" constant="40" id="v6Y-r1-wXm"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="leading" secondItem="Qdk-7s-7m1" secondAttribute="leading" id="4TW-X1-7er"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="width" secondItem="Qdk-7s-7m1" secondAttribute="width" id="6x9-Ld-ghl"/>
                                     <constraint firstItem="rrP-cA-E66" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="9zh-XF-MGA"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="width" secondItem="EZw-vH-glq" secondAttribute="width" id="CzS-Zh-9E5"/>
                                     <constraint firstAttribute="trailing" secondItem="Qdk-7s-7m1" secondAttribute="trailing" constant="20" id="F0g-A8-Qmd"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="top" secondItem="hw2-0W-EOe" secondAttribute="top" constant="123" id="I0I-gB-8MX"/>
-                                    <constraint firstAttribute="bottom" secondItem="rrP-cA-E66" secondAttribute="bottom" constant="145" id="Jte-oA-En6"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="height" secondItem="Qdk-7s-7m1" secondAttribute="height" id="Jn4-Zj-yT0"/>
                                     <constraint firstItem="EZw-vH-glq" firstAttribute="top" secondItem="Qdk-7s-7m1" secondAttribute="bottom" constant="20" id="KVt-Ox-g1G"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="top" secondItem="rrP-cA-E66" secondAttribute="bottom" constant="14" id="NY4-Rh-blE"/>
                                     <constraint firstItem="ALF-U1-QeR" firstAttribute="top" secondItem="EZw-vH-glq" secondAttribute="bottom" constant="20" id="Rse-Cg-bG6"/>
+                                    <constraint firstAttribute="bottom" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="91" id="S0C-WY-Znz"/>
                                     <constraint firstItem="EZw-vH-glq" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="T5V-Bz-jRA"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="centerX" secondItem="EZw-vH-glq" secondAttribute="centerX" id="Z7T-Vo-TVZ"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="leading" secondItem="hw2-0W-EOe" secondAttribute="leading" constant="20" id="h2P-9f-WR9"/>
@@ -171,6 +191,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Qzb-OL-9dM"/>
                     <connections>
+                        <outlet property="autoTextField" destination="xQ1-T9-VOe" id="Lec-wY-WTp"/>
                         <outlet property="dateField" destination="ALF-U1-QeR" id="YeD-eW-z9D"/>
                         <outlet property="selectField" destination="EZw-vH-glq" id="PMp-id-4tr"/>
                         <outlet property="textField" destination="Qdk-7s-7m1" id="BqD-pM-0yk"/>
@@ -263,15 +284,33 @@
                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9V0-FJ-LzJ" customClass="BBFloatingLabelAutoCompleteField">
+                                        <rect key="frame" x="20" y="437" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="JFm-6Y-pqX"/>
+                                            <constraint firstAttribute="height" constant="40" id="QKw-Yh-cKX"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FLw-Ey-heL" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="2N7-eC-At7"/>
                                     <constraint firstItem="N0q-MG-Aec" firstAttribute="top" secondItem="uz3-Wy-rqM" secondAttribute="bottom" constant="20" id="43F-li-ClB"/>
+                                    <constraint firstItem="9V0-FJ-LzJ" firstAttribute="centerX" secondItem="FLw-Ey-heL" secondAttribute="centerX" id="8H2-MP-fL1"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="centerX" secondItem="uz3-Wy-rqM" secondAttribute="centerX" id="95v-ba-f0d"/>
+                                    <constraint firstAttribute="bottom" secondItem="9V0-FJ-LzJ" secondAttribute="bottom" constant="91" id="Dyc-Vh-Mwh"/>
+                                    <constraint firstItem="9V0-FJ-LzJ" firstAttribute="top" secondItem="FLw-Ey-heL" secondAttribute="bottom" constant="14" id="E5F-19-8kq"/>
                                     <constraint firstAttribute="trailing" secondItem="Wk9-z0-Ag5" secondAttribute="trailing" constant="20" id="JWh-Qu-LgD"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="width" secondItem="uz3-Wy-rqM" secondAttribute="width" id="Jrx-De-6VT"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="top" secondItem="Nqg-x7-PcI" secondAttribute="top" constant="123" id="LL3-ak-Mgk"/>
-                                    <constraint firstAttribute="bottom" secondItem="FLw-Ey-heL" secondAttribute="bottom" constant="145" id="a7Q-9n-DJa"/>
                                     <constraint firstItem="FLw-Ey-heL" firstAttribute="top" secondItem="N0q-MG-Aec" secondAttribute="bottom" constant="20" id="jHw-2J-2Ch"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="leading" secondItem="Nqg-x7-PcI" secondAttribute="leading" constant="20" id="kQb-ka-3jF"/>
                                     <constraint firstItem="uz3-Wy-rqM" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="lb9-Dj-saY"/>
@@ -289,6 +328,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="sOb-3w-j79"/>
                     <connections>
+                        <outlet property="autoTextField" destination="9V0-FJ-LzJ" id="SZ8-de-Azk"/>
                         <outlet property="dateField" destination="N0q-MG-Aec" id="FRf-Ir-3y3"/>
                         <outlet property="selectField" destination="uz3-Wy-rqM" id="tJ4-RN-vI0"/>
                         <outlet property="textField" destination="Wk9-z0-Ag5" id="thg-QA-PbP"/>

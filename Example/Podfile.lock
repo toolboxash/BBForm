@@ -1,5 +1,5 @@
 PODS:
-  - BBForm (0.1.0):
+  - BBForm (0.1.1):
     - PureLayout
   - Expecta (0.3.1)
   - PureLayout (2.0.5)
@@ -19,11 +19,11 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BBForm: 75893f48cca475a29754d660e25df5e437901253
+  BBForm: b619fb22ab9e7a192509072affd972337b545c9a
   Expecta: 03aabd0a89d8dea843baecb19a7fd7466a69a31d
   PureLayout: 63a3257320223e8edddcd3afb407445f85a6bf74
   Reveal-iOS-SDK: b6d94eb78d84ebd2e3182063577975561cd6dbd9
   Specta: 9141310f46b1f68b676650ff2854e1ed0b74163a
   TPKeyboardAvoiding: 0797ad5f2366e2435e605202b01f3b7cff5d82cd
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.36.0.beta.2
