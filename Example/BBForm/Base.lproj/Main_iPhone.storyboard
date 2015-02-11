@@ -161,21 +161,36 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9F-zB-39e" customClass="BBStyleButton">
+                                        <rect key="frame" x="20" y="504" width="280" height="40"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.87450980389999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Verify">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verifyPressed:" destination="HkE-z6-azv" eventType="touchUpInside" id="pA9-yf-Qb0"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="leading" secondItem="Qdk-7s-7m1" secondAttribute="leading" id="4TW-X1-7er"/>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="width" secondItem="Qdk-7s-7m1" secondAttribute="width" id="6x9-Ld-ghl"/>
                                     <constraint firstItem="rrP-cA-E66" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="9zh-XF-MGA"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="centerX" secondItem="xQ1-T9-VOe" secondAttribute="centerX" id="BJi-hc-gat"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="27" id="Cyb-RG-wQW"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="width" secondItem="EZw-vH-glq" secondAttribute="width" id="CzS-Zh-9E5"/>
                                     <constraint firstAttribute="trailing" secondItem="Qdk-7s-7m1" secondAttribute="trailing" constant="20" id="F0g-A8-Qmd"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="top" secondItem="hw2-0W-EOe" secondAttribute="top" constant="123" id="I0I-gB-8MX"/>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="height" secondItem="Qdk-7s-7m1" secondAttribute="height" id="Jn4-Zj-yT0"/>
                                     <constraint firstItem="EZw-vH-glq" firstAttribute="top" secondItem="Qdk-7s-7m1" secondAttribute="bottom" constant="20" id="KVt-Ox-g1G"/>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="top" secondItem="rrP-cA-E66" secondAttribute="bottom" constant="14" id="NY4-Rh-blE"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="width" secondItem="xQ1-T9-VOe" secondAttribute="width" id="PDq-TV-cT3"/>
                                     <constraint firstItem="ALF-U1-QeR" firstAttribute="top" secondItem="EZw-vH-glq" secondAttribute="bottom" constant="20" id="Rse-Cg-bG6"/>
                                     <constraint firstAttribute="bottom" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="91" id="S0C-WY-Znz"/>
                                     <constraint firstItem="EZw-vH-glq" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="T5V-Bz-jRA"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="height" secondItem="xQ1-T9-VOe" secondAttribute="height" id="XQ8-lW-M1f"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="centerX" secondItem="EZw-vH-glq" secondAttribute="centerX" id="Z7T-Vo-TVZ"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="27" id="e4O-M0-SLN"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="leading" secondItem="hw2-0W-EOe" secondAttribute="leading" constant="20" id="h2P-9f-WR9"/>
                                     <constraint firstItem="rrP-cA-E66" firstAttribute="top" secondItem="ALF-U1-QeR" secondAttribute="bottom" constant="20" id="wN9-r7-gqB"/>
                                 </constraints>
@@ -300,6 +315,16 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFz-qQ-eKg" customClass="BBStyleButton">
+                                        <rect key="frame" x="20" y="504" width="280" height="40"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.87450980389999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Verify">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verifyPressed:" destination="DZ9-D7-djw" eventType="touchUpInside" id="1yi-OK-cBU"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="FLw-Ey-heL" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="2N7-eC-At7"/>
@@ -311,9 +336,13 @@
                                     <constraint firstAttribute="trailing" secondItem="Wk9-z0-Ag5" secondAttribute="trailing" constant="20" id="JWh-Qu-LgD"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="width" secondItem="uz3-Wy-rqM" secondAttribute="width" id="Jrx-De-6VT"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="top" secondItem="Nqg-x7-PcI" secondAttribute="top" constant="123" id="LL3-ak-Mgk"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="height" secondItem="9V0-FJ-LzJ" secondAttribute="height" id="TmP-Tr-mgr"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="centerX" secondItem="9V0-FJ-LzJ" secondAttribute="centerX" id="e8y-ko-u0s"/>
                                     <constraint firstItem="FLw-Ey-heL" firstAttribute="top" secondItem="N0q-MG-Aec" secondAttribute="bottom" constant="20" id="jHw-2J-2Ch"/>
                                     <constraint firstItem="Wk9-z0-Ag5" firstAttribute="leading" secondItem="Nqg-x7-PcI" secondAttribute="leading" constant="20" id="kQb-ka-3jF"/>
                                     <constraint firstItem="uz3-Wy-rqM" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="lb9-Dj-saY"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="top" secondItem="9V0-FJ-LzJ" secondAttribute="bottom" constant="27" id="pZf-fc-6Lw"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="width" secondItem="9V0-FJ-LzJ" secondAttribute="width" id="sea-Hp-nl7"/>
                                     <constraint firstItem="uz3-Wy-rqM" firstAttribute="top" secondItem="Wk9-z0-Ag5" secondAttribute="bottom" constant="20" id="tNB-Hd-5r6"/>
                                 </constraints>
                             </scrollView>

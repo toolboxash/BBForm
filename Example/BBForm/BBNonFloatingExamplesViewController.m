@@ -12,6 +12,7 @@
 #import "BBFormTextField.h"
 #import "BBFormTextView.h"
 #import "BBFormAutoCompleteField.h"
+#import "BBFormValidator.h"
 
 @interface BBNonFloatingExamplesViewController () <BBFormElementDelegate>
 {
@@ -48,7 +49,12 @@
     [_textView updateWithElement:textViewElement];
     [_autoTextField updateWithElement:autoCompleteElement];
     
-    // we should add some validations to show how that works too..
+    BBConditionPresent *presentCondition = [[BBConditionPresent alloc] initWithLocalizedViolationString:NSLocalizedString(@"Please complete all fields", @"Please complete all fields")];
+    textFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    selectFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    dateFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    textViewElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    autoCompleteElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,6 +63,35 @@
     // Dispose of any resources that can be recreated.
     
     // create the model
+}
+
+- (IBAction)verifyPressed:(id)sender {
+    
+    NSArray *formModel = @[textFieldElement, selectFieldElement, dateFieldElement, textViewElement, autoCompleteElement];
+    for (BBFormElement *element in formModel)
+    {
+        BBValidator *validator = (BBValidator*)element.validator;
+        BBConditionCollection *failedConditions = [validator checkConditions:element];
+        
+        if (failedConditions.count != 0)
+        {
+            BBCondition *cond = [failedConditions conditionAtIndex:0];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: nil
+                                                            message: cond.localizedViolationString
+                                                           delegate: nil
+                                                  cancelButtonTitle: NSLocalizedString(@"OK", @"OK")
+                                                  otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: nil
+                                                    message: @"All verified!"
+                                                   delegate: nil
+                                          cancelButtonTitle: NSLocalizedString(@"OK", @"OK")
+                                          otherButtonTitles: nil];
+    [alert show];
+
 }
 
 @end

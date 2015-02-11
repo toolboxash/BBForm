@@ -4,6 +4,9 @@
 #import "BBFormTextField.h"
 #import "BBFormDateField.h"
 #import "BBFormSelectField.h"
+#import "BBFormAutoCompleteField.h"
+#import "BBFormTextView.h"
+
 //#import "BBMultiSelectListFormElement.h"
 
 @implementation BBConditionPresent
@@ -14,6 +17,16 @@
     {
         NSString *string = ((BBFormTextFieldElement*)element).value;
     
+        if(!string)
+        {
+            return NO;
+        }
+        return string.length > 0 ? YES : NO;
+    }
+    if ([element isKindOfClass:[BBFormTextViewElement class]])
+    {
+        NSString *string = ((BBFormTextViewElement*)element).value;
+        
         if(!string)
         {
             return NO;
@@ -42,11 +55,19 @@
         
         return NO;
     }
-//    else if  ([element isKindOfClass:[BBMultiSelectListFormElement class]])
-//    {
-//        NSArray *selected = ((BBMultiSelectListFormElement*)element).indexPathsForSelectedRows;
-//        return (selected.count >0) ? YES : NO;
-//    }
+    else if  ([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
+    {
+        NSArray *values = ((BBFormAutoCompleteFieldElement*)element).values;
+        NSInteger index = ((BBFormAutoCompleteFieldElement*)element).index;
+        
+        if ((index >=0) && (index < values.count))
+        {
+            NSString *string = values[index];
+            return string.length > 0 ? YES : NO;
+        }
+        
+        return NO;
+    }
     return NO;
 }
 

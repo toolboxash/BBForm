@@ -26,9 +26,7 @@
         self.backgroundColor = [BBStyleSettings sharedInstance].unselectedColor;
         
         float sortaPixel = 1.0/[UIScreen mainScreen].scale;
-        _separatorView = [[UIView alloc] initWithFrame:
-                                    CGRectMake(0, 0, sortaPixel, self.frame.size.height)];
-        
+        _separatorView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, sortaPixel, self.frame.size.height)];        
         _separatorView.userInteractionEnabled = NO;
         [_separatorView setBackgroundColor:[UIColor whiteColor]];
         [self addSubview:_separatorView];
@@ -192,9 +190,14 @@
 
 -(void)textFieldDidChange {
     // for now dont bother with another thread, or operstiaon queue
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", _textfield.text];
-    autoCompleteSuggestions = [self.element.values filteredArrayUsingPredicate:predicate];
-    self.element.index = -1;
+    NSPredicate *suggestPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", _textfield.text];
+    autoCompleteSuggestions = [self.element.values filteredArrayUsingPredicate:suggestPredicate];
+    
+    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
+    self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+        return [matchPredicate evaluateWithObject:obj];
+    }];
+
     [_collectionView reloadData];
 }
 
@@ -209,7 +212,7 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;
 {
-    if ((self.element.index >=0) || (_textfield.text.length == 0))
+    if (((self.element.index >=0) && (self.element.index < self.element.values.count)) || (_textfield.text.length == 0))
         return YES;
     return NO;
 }
