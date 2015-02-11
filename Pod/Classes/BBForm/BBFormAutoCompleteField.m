@@ -249,8 +249,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    [self updateIndex];    
-    _textfield.text = self.element.values[self.element.index];
+    _textfield.text = autoCompleteSuggestions[indexPath.row];
+    [self updateIndex];
     [_textfield resignFirstResponder];
     if ([self.element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
     {
