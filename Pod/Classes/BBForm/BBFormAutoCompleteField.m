@@ -181,6 +181,13 @@
     return [_textfield resignFirstResponder];
 }
 
+-(void)updateIndex
+{
+    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
+    self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+        return [matchPredicate evaluateWithObject:obj];
+    }];
+}
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
@@ -193,11 +200,7 @@
     NSPredicate *suggestPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", _textfield.text];
     autoCompleteSuggestions = [self.element.values filteredArrayUsingPredicate:suggestPredicate];
     
-    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
-    self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        return [matchPredicate evaluateWithObject:obj];
-    }];
-
+    [self updateIndex];
     [_collectionView reloadData];
 }
 
@@ -246,8 +249,8 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 {
-    self.element.index = [self.element.values indexOfObject:_textfield.text];
-    _textfield.text = autoCompleteSuggestions[indexPath.row];
+    [self updateIndex];    
+    _textfield.text = self.element.values[self.element.index];
     [_textfield resignFirstResponder];
     if ([self.element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
     {
