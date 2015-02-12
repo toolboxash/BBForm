@@ -11,6 +11,8 @@
 #import "BBFloatingLabelSelectField.h"
 #import "BBFloatingLabelTextField.h"
 #import "BBFloatingLabelTextView.h"
+#import "BBFloatingLabelAutoCompleteField.h"
+#import "BBFormValidator.h"
 
 @interface BBFloatingExamplesViewController () <BBFormElementDelegate>
 {
@@ -18,12 +20,14 @@
     BBFormSelectFieldElement *selectFieldElement;
     BBFormDateFieldElement *dateFieldElement;
     BBFormTextViewElement *textViewElement;
+    BBFormAutoCompleteFieldElement *autoCompleteElement;
 }
 
 @property (nonatomic, strong) IBOutlet BBFloatingLabelDateField *dateField;
 @property (nonatomic, strong) IBOutlet BBFloatingLabelSelectField *selectField;
 @property (nonatomic, strong) IBOutlet BBFloatingLabelTextField *textField;
 @property (nonatomic, strong) IBOutlet BBFloatingLabelTextView *textView;
+@property (nonatomic, strong) IBOutlet BBFloatingLabelAutoCompleteField *autoTextField;
 
 @end
 
@@ -37,13 +41,20 @@
     selectFieldElement = [BBFormSelectFieldElement selectElementWithID:1 labelText:@"Select Option" values:@[@"1 minute",@"5 minutes",@"15 minutes",@"1 hour"] delegate:self];
     dateFieldElement = [BBFormDateFieldElement datePickerElementWithID:2 labelText:@"Enter a date" date:nil datePickerMode:UIDatePickerModeDate delegate:nil];
     textViewElement = [BBFormTextViewElement textViewElementWithID:3 placeholderText:@"Enter some text" value:nil delegate:nil];
+    autoCompleteElement = [BBFormAutoCompleteFieldElement selectElementWithID:1 labelText:@"Select Option" values:@[@"Dog",@"Cat",@"Rabbity Rabbit",@"Horse",@"Dog",@"Cat",@"Rabbit",@"Horse",@"Dog",@"Cat",@"Rabbit",@"Horse"] delegate:self];
 
     [_textField updateWithElement:textFieldElement];
     [_selectField updateWithElement:selectFieldElement];
     [_dateField updateWithElement:dateFieldElement];
     [_textView updateWithElement:textViewElement];
+    [_autoTextField updateWithElement:autoCompleteElement];
 
-    // we should add some validations to show how that works too..
+    BBConditionPresent *presentCondition = [[BBConditionPresent alloc] initWithLocalizedViolationString:NSLocalizedString(@"Please complete all fields", @"Please complete all fields")];
+    textFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    selectFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    dateFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    textViewElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
+    autoCompleteElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,4 +65,31 @@
     // create the model
 }
 
+- (IBAction)verifyPressed:(id)sender {
+    
+    NSArray *formModel = @[textFieldElement, selectFieldElement, dateFieldElement, textViewElement, autoCompleteElement];
+    for (BBFormElement *element in formModel)
+    {
+        BBValidator *validator = (BBValidator*)element.validator;
+        BBConditionCollection *failedConditions = [validator checkConditions:element];
+        
+        if (failedConditions.count != 0)
+        {
+            BBCondition *cond = [failedConditions conditionAtIndex:0];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle: nil
+                                                            message: cond.localizedViolationString
+                                                           delegate: nil
+                                                  cancelButtonTitle: NSLocalizedString(@"OK", @"OK")
+                                                  otherButtonTitles: nil];
+            [alert show];
+            return;
+        }
+    }
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: nil
+                                                    message: @"All verified!"
+                                                   delegate: nil
+                                          cancelButtonTitle: NSLocalizedString(@"OK", @"OK")
+                                          otherButtonTitles: nil];
+    [alert show];
+}
 @end

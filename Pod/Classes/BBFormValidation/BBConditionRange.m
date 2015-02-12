@@ -28,19 +28,19 @@
     if ([element isKindOfClass:[BBFormTextFieldElement class]])
     {
         NSString *string = ((BBFormTextFieldElement*)element).value;
-    
         BOOL success = NO;
         
         if (0 == _range.location
             && 0 == _range.length)
             success = YES;
         
-        if (nil == string)
-            string = [NSString string];
-        
-        if(string.length >= _range.location && string.length <= _range.length)
+        if (((BBFormTextFieldElement*)element).inputType == BBTextInputTypeNumber)
         {
-            success = YES;
+            success = NSLocationInRange([string integerValue], _range);
+        }
+        else
+        {
+            success = NSLocationInRange(string.length, _range);
         }
         
         return success;
