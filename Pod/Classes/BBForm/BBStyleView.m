@@ -40,13 +40,13 @@
     self.layer.borderColor = _borderColor.CGColor;
 }
 
-- (void) setBorderWidth:(NSInteger)borderWidth
+- (void) setBorderWidth:(CGFloat)borderWidth
 {
     _borderWidth = borderWidth;
     self.layer.borderWidth = _borderWidth;
 }
 
-- (void) setCornerRadius:(NSInteger)cornerRadius
+- (void) setCornerRadius:(CGFloat)cornerRadius
 {
     _cornerRadius = cornerRadius;
     self.layer.cornerRadius = cornerRadius;

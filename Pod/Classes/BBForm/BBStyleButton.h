@@ -13,8 +13,8 @@
 @interface BBStyleButton : UIButton
 
 @property (nonatomic) /*IBInspectable*/ UIColor *borderColor;
-@property (nonatomic) /*IBInspectable*/ NSInteger borderWidth;
-@property (nonatomic) /*IBInspectable*/ NSInteger cornerRadius;
+@property (nonatomic) /*IBInspectable*/ CGFloat borderWidth;
+@property (nonatomic) /*IBInspectable*/ CGFloat cornerRadius;
 
 -(void)setup;
 
