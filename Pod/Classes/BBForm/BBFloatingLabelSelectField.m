@@ -98,8 +98,10 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     [super pickerView:pickerView didSelectRow:row inComponent:component];
-    
-    [self showFloatingLabel:YES];
+    if (self.element.index >=0)
+        [self showFloatingLabel:YES];
+    else
+        [self hideFloatingLabel:YES];
 }
 
 
@@ -130,6 +132,33 @@
     else
     {
         showBlock();
+    }
+}
+
+- (void)hideFloatingLabel:(BOOL)animated
+{
+    floatingLabelCenterConstraint.constant = 0;
+    valueLabelCenterConstraint.constant = 0;
+    placeholderLabelCenterConstraint.constant = 0;
+
+    void (^hideBlock)() = ^{
+        self.floatingLabel.alpha = 0.0f;
+        self.valueLabel.alpha = 0.0f;
+        self.placeholderLabel.alpha = 1.0f;
+        [self layoutIfNeeded];
+    };
+    
+    if (animated)
+    {
+        [UIView animateWithDuration:0.3f
+                              delay:0.0f
+                            options:UIViewAnimationOptionBeginFromCurrentState|UIViewAnimationOptionCurveEaseIn
+                         animations:hideBlock
+                         completion:nil];
+    }
+    else
+    {
+        hideBlock();
     }
 }
 

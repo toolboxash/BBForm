@@ -32,6 +32,18 @@
     return element;
 }
 
++ (id)selectElementWithID:(NSInteger)elementID labelText:(NSString *)labelText values:(NSArray*)values index:(NSInteger)index insertBlank:(BOOL)insertBlank delegate:(id<BBFormElementDelegate>)delegate;
+{
+    BBFormSelectFieldElement *element = [super elementWithID:elementID delegate:delegate];
+    element.labelText = labelText;
+    element.values = values;
+    element.index = -1;
+    element.originalIndex = -1;
+    element.insertBlank = insertBlank;
+    return element;
+}
+
+
 @end
 
 
@@ -188,8 +200,10 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    _valueLabel.text = [self.element.values objectAtIndex:row];
-    _element.index = row;
+    NSInteger adjustedRow = (_element.insertBlank) ? row-1:row;
+    _valueLabel.text = (adjustedRow<0) ? nil : _element.values[adjustedRow];
+    _element.index = adjustedRow;
+
     if ([_element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
     {
         [(id<BBFormElementDelegate>)_element.delegate formElementDidChangeValue:_element];
@@ -198,14 +212,14 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component;
 {
-    return _element.values.count;
+    return (_element.insertBlank) ? _element.values.count+1:_element.values.count;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component;
 {
-    return _element.values[row];
+    NSInteger adjustedRow = (_element.insertBlank) ? row-1:row;
+    return (adjustedRow<0) ? @"" : _element.values[adjustedRow];
 }
-
 
 -(NSString*)text
 {
