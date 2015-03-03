@@ -14,10 +14,12 @@
 + (id)selectElementWithID:(NSInteger)elementID labelText:(NSString *)labelText values:(NSArray*)values delegate:(id<BBFormElementDelegate>)delegate;
 + (id)selectElementWithID:(NSInteger)elementID labelText:(NSString *)labelText values:(NSArray*)values index:(NSInteger)index delegate:(id<BBFormElementDelegate>)delegate;
 
+
 @property (nonatomic, copy) NSString *labelText;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, assign) NSInteger originalIndex;
 @property (nonatomic, retain) NSArray *values;
+@property (nonatomic, assign) BOOL displayAllWhenBlank;
 
 @end
 

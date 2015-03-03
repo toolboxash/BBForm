@@ -157,6 +157,8 @@
     _textfield.keyboardType = UIKeyboardTypeDefault;
     _textfield.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     _textfield.autocorrectionType = UITextAutocorrectionTypeNo;
+    
+    [self updateSuggestions];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
@@ -181,6 +183,15 @@
     return [_textfield resignFirstResponder];
 }
 
+-(void)updateSuggestions
+{
+    NSPredicate *suggestPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", _textfield.text];
+    autoCompleteSuggestions = [self.element.values filteredArrayUsingPredicate:suggestPredicate];
+    
+    if ((_textfield.text.length == 0) && self.element.displayAllWhenBlank)
+        autoCompleteSuggestions = self.element.values;
+}
+
 -(void)updateIndex
 {
     NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
@@ -197,9 +208,7 @@
 
 -(void)textFieldDidChange {
     // for now dont bother with another thread, or operstiaon queue
-    NSPredicate *suggestPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", _textfield.text];
-    autoCompleteSuggestions = [self.element.values filteredArrayUsingPredicate:suggestPredicate];
-    
+    [self updateSuggestions];
     [self updateIndex];
     [_collectionView reloadData];
 }
