@@ -63,9 +63,7 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-    NSString *string = ((BBFormTextFieldElement*)element).value;
+    NSString *string = ((BBFormElement*)element).value;
  
     BOOL success = YES;
     
