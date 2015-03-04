@@ -185,7 +185,7 @@
 
 -(void)updateSuggestions
 {
-    NSPredicate *suggestPredicate = [NSPredicate predicateWithFormat:@"self CONTAINS[cd] %@", _textfield.text];
+    NSPredicate *suggestPredicate = [NSPredicate predicateWithFormat:@"self contains[cd] %@", _textfield.text];
     autoCompleteSuggestions = [self.element.values filteredArrayUsingPredicate:suggestPredicate];
     
     if ((_textfield.text.length == 0) && self.element.displayAllWhenBlank)
@@ -194,10 +194,15 @@
 
 -(void)updateIndex
 {
-    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
+    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"self ==[c] %@", _textfield.text];
     self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
         return [matchPredicate evaluateWithObject:obj];
     }];
+    
+    if (self.element.index == NSNotFound)//check this condition for the max integer value
+    {
+        self.element.index = -1;
+    }
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -260,6 +265,12 @@
 {
     _textfield.text = autoCompleteSuggestions[indexPath.row];
     [self updateIndex];
+    if (self.element.index <0)
+    {
+        // wtf ?
+        self.element.index = [self.element.values  indexOfObject:autoCompleteSuggestions[indexPath.row]];
+    }
+
     [_textfield resignFirstResponder];
     if ([self.element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
     {
