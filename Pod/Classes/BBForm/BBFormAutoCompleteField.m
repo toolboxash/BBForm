@@ -51,7 +51,7 @@
 + (id)selectElementWithID:(NSInteger)elementID labelText:(NSString *)labelText values:(NSArray*)values delegate:(id<BBFormElementDelegate>)delegate;
 {
     BBFormAutoCompleteFieldElement *element = [super elementWithID:elementID delegate:delegate];
-    element.labelText = labelText;
+    element.value = labelText;
     element.values = values;
     element.index = -1;
     element.originalIndex = -1;
@@ -149,7 +149,7 @@
 -(void)updateWithElement:(BBFormAutoCompleteFieldElement*)element
 {
     self.element = element;
-    self.placeholder = element.labelText;
+    self.placeholder = element.value;
     if ((element.index >=0) && (element.index < element.values.count))
         _textfield.text = [self.element.values objectAtIndex:element.index];
     else
@@ -194,14 +194,17 @@
 
 -(void)updateIndex
 {
-    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
-    self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-        return [matchPredicate evaluateWithObject:obj];
-    }];
-    
-    if (self.element.index == NSNotFound)//check this condition for the max integer value
+    if (self.element.values.count > 0)
     {
-        self.element.index = -1;
+        NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
+        self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+            return [matchPredicate evaluateWithObject:obj];
+        }];
+        
+        if (self.element.index == NSNotFound)//check this condition for the max integer value
+        {
+            self.element.index = -1;
+        }
     }
 }
 

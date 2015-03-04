@@ -4,21 +4,9 @@
 
 @implementation BBConditionEmail
 
-
-- (BOOL)check:(BBFormElement *)element;
-{
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-    NSString *string = ((BBFormTextFieldElement*)element).value;
-    
-    if (nil == string)
-        string = [NSString string];
-    
-    self.regexString = @"^[+\\w\\.\\-']+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{2,})+$";
-    
-    return [super check:element];
+- (id)initWithLocalizedViolationString:(NSString *)localizedViolationString {
+    return [super initWithLocalizedViolationString:localizedViolationString andRegexString:@"^[+\\w\\.\\-']+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{2,})+$"];
 }
-
 
 #pragma mark - Localization
 
