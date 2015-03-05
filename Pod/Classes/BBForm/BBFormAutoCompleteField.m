@@ -51,7 +51,7 @@
 + (id)selectElementWithID:(NSInteger)elementID labelText:(NSString *)labelText values:(NSArray*)values delegate:(id<BBFormElementDelegate>)delegate;
 {
     BBFormAutoCompleteFieldElement *element = [super elementWithID:elementID delegate:delegate];
-    element.value = labelText;
+    element.labelText = labelText;
     element.values = values;
     element.index = -1;
     element.originalIndex = -1;
@@ -149,7 +149,7 @@
 -(void)updateWithElement:(BBFormAutoCompleteFieldElement*)element
 {
     self.element = element;
-    self.placeholder = element.value;
+    self.placeholder = element.labelText;
     if ((element.index >=0) && (element.index < element.values.count))
         _textfield.text = [self.element.values objectAtIndex:element.index];
     else

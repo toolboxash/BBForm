@@ -58,7 +58,7 @@
     }
     else if  ([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
     {
-        NSString *string = ((BBFormAutoCompleteFieldElement*)element).value;
+        NSString *string = ((BBFormAutoCompleteFieldElement*)element).labelText;
         
         return [self isStringPresent:string];
     }

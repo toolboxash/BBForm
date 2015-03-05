@@ -19,6 +19,7 @@
 @property (nonatomic, assign) NSInteger originalIndex;
 @property (nonatomic, retain) NSArray *values;
 @property (nonatomic, assign) BOOL displayAllWhenBlank;
+@property (nonatomic, copy) NSString* labelText;
 
 @end
 

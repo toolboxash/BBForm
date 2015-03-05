@@ -29,7 +29,6 @@
 @property (nonatomic, retain) id validator;
 @property (nonatomic, assign) id<BBFormElementDelegate> delegate;
 @property (nonatomic, assign) NSInteger elementID;
-@property (nonatomic, copy) NSString* value;
 
 @end
 
