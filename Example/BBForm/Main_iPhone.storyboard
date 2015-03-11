@@ -50,7 +50,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="bzN-eS-b8j"/>
                     <connections>
-                        <outlet property="prePopulatedSwitch" destination="DvZ-v3-TOi" id="SaK-Q2-Jso"/>
+                        <outlet property="prePopulatedSwitch" destination="DvZ-v3-TOi" id="ld6-VW-dPF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ApE-ap-uID" userLabel="First Responder" sceneMemberID="firstResponder"/>

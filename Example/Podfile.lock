@@ -1,5 +1,5 @@
 PODS:
-  - BBForm (0.1.0):
+  - BBForm (0.1.2):
     - PureLayout
   - Expecta (0.3.2)
   - Expecta+Snapshots (1.3.1):
@@ -8,6 +8,7 @@ PODS:
   - FBSnapshotTestCase (1.5)
   - PureLayout (2.0.5)
   - Specta (0.4.0)
+  - TPKeyboardAvoiding (1.2.6)
 
 DEPENDENCIES:
   - BBForm (from `../`)
@@ -15,17 +16,19 @@ DEPENDENCIES:
   - Expecta+Snapshots
   - FBSnapshotTestCase
   - Specta
+  - TPKeyboardAvoiding
 
 EXTERNAL SOURCES:
   BBForm:
     :path: ../
 
 SPEC CHECKSUMS:
-  BBForm: 33eaae4afe617a6995c9f892a9669899efd8fe45
+  BBForm: db93015b000c2d69f1c75656c9db808e8be5505d
   Expecta: ee641011fe10aa1855d487b40e4976dac50ec342
   Expecta+Snapshots: 4a56b9411c6ed156987072e52c39de67d864015a
   FBSnapshotTestCase: e2914fbaabccea1dcc773d6a16b1c24540642488
   PureLayout: 63a3257320223e8edddcd3afb407445f85a6bf74
   Specta: 1df326d6ec48603c77f507a0ab1f89ad2df1c582
+  TPKeyboardAvoiding: 0797ad5f2366e2435e605202b01f3b7cff5d82cd
 
 COCOAPODS: 0.36.0

@@ -2,6 +2,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 target 'BBForm', :exclusive => true do
   pod "BBForm", :path => "../"
+  pod 'TPKeyboardAvoiding'
 end
 
 target 'Tests', :exclusive => true do

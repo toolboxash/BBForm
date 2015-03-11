@@ -84,6 +84,15 @@
     [super setPlaceholder:placeholder];
 }
 
+-(void)updateWithElement:(BBFormDateFieldElement*)element
+{
+    [super updateWithElement:element];
+    if (self.valueLabel.text.length >0)
+    {
+        [self showFloatingLabel:NO];
+    }
+}
+
 -(void)selectedDateDidChange
 {
     [super selectedDateDidChange];
