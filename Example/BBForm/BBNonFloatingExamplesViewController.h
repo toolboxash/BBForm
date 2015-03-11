@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BBFormViewController.h"
 
-@interface BBNonFloatingExamplesViewController : UIViewController
+@interface BBNonFloatingExamplesViewController : BBFormViewController
 
 @end

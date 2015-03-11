@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10B913AC1AB0729E00006BFA /* BBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B913AB1AB0729E00006BFA /* BBViewController.m */; };
+		10B913AF1AB0730200006BFA /* BBFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10B913AE1AB0730200006BFA /* BBFormViewController.m */; };
 		10CCF2281AB06B8000034A3B /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10CCF2221AB06B8000034A3B /* Main_iPhone.storyboard */; };
 		10CCF2291AB06B8000034A3B /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10CCF2231AB06B8000034A3B /* Main_iPad.storyboard */; };
 		10CCF22A1AB06B8000034A3B /* BBFloatingExamplesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 10CCF2251AB06B8000034A3B /* BBFloatingExamplesViewController.m */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		10B913AA1AB0729E00006BFA /* BBViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBViewController.h; sourceTree = "<group>"; };
+		10B913AB1AB0729E00006BFA /* BBViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBViewController.m; sourceTree = "<group>"; };
+		10B913AD1AB0730200006BFA /* BBFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBFormViewController.h; sourceTree = "<group>"; };
+		10B913AE1AB0730200006BFA /* BBFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBFormViewController.m; sourceTree = "<group>"; };
 		10CCF2221AB06B8000034A3B /* Main_iPhone.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPhone.storyboard; sourceTree = "<group>"; };
 		10CCF2231AB06B8000034A3B /* Main_iPad.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main_iPad.storyboard; sourceTree = "<group>"; };
 		10CCF2241AB06B8000034A3B /* BBFloatingExamplesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBFloatingExamplesViewController.h; sourceTree = "<group>"; };
@@ -145,6 +151,10 @@
 				6003F59D195388D20070C39A /* BBAppDelegate.m */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
+				10B913AA1AB0729E00006BFA /* BBViewController.h */,
+				10B913AB1AB0729E00006BFA /* BBViewController.m */,
+				10B913AD1AB0730200006BFA /* BBFormViewController.h */,
+				10B913AE1AB0730200006BFA /* BBFormViewController.m */,
 			);
 			path = BBForm;
 			sourceTree = "<group>";
@@ -368,6 +378,8 @@
 			files = (
 				6003F59E195388D20070C39A /* BBAppDelegate.m in Sources */,
 				10CCF22B1AB06B8000034A3B /* BBNonFloatingExamplesViewController.m in Sources */,
+				10B913AF1AB0730200006BFA /* BBFormViewController.m in Sources */,
+				10B913AC1AB0729E00006BFA /* BBViewController.m in Sources */,
 				10CCF22A1AB06B8000034A3B /* BBFloatingExamplesViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
