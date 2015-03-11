@@ -1,12 +1,14 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
 target 'BBForm', :exclusive => true do
   pod "BBForm", :path => "../"
-  pod 'Reveal-iOS-SDK'
-  pod 'TPKeyboardAvoiding'
 end
 
 target 'Tests', :exclusive => true do
   pod "BBForm", :path => "../"
 
-  pod 'Specta', '~> 0.2.1'
+  pod 'Specta'
   pod 'Expecta'
+  pod 'FBSnapshotTestCase'
+  pod 'Expecta+Snapshots'
 end
