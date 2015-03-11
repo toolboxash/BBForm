@@ -25,8 +25,8 @@ typedef enum {
 + (instancetype)passwordInputElementWithID:(NSInteger)elementID placeholderText:(NSString *)placeholderText value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
 + (instancetype)emailInputElementWithID:(NSInteger)elementID placeholderText:(NSString *)placeholderText value:(NSString *)value delegate:(id<BBFormElementDelegate>)delegate;
 
-@property (nonatomic, copy) NSString* placeholderText;
 @property (nonatomic, copy) NSString* value;
+@property (nonatomic, copy) NSString* placeholderText;
 @property (nonatomic, copy) NSString* originalValue;
 @property (nonatomic, assign) BBTextInputType inputType;
 
