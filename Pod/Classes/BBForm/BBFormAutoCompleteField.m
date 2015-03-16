@@ -159,6 +159,7 @@
     _textfield.autocorrectionType = UITextAutocorrectionTypeNo;
     
     [self updateSuggestions];
+    [_collectionView reloadData];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
