@@ -195,17 +195,14 @@
 
 -(void)updateIndex
 {
-    if (self.element.values.count > 0)
+    NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"self ==[c] %@", _textfield.text];
+    self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
+        return [matchPredicate evaluateWithObject:obj];
+    }];
+    
+    if (self.element.index == NSNotFound)//check this condition for the max integer value
     {
-        NSPredicate *matchPredicate = [NSPredicate predicateWithFormat:@"SELF matches[cd] %@", _textfield.text];
-        self.element.index = [self.element.values  indexOfObjectPassingTest:^(id obj, NSUInteger idx, BOOL *stop) {
-            return [matchPredicate evaluateWithObject:obj];
-        }];
-        
-        if (self.element.index == NSNotFound)//check this condition for the max integer value
-        {
-            self.element.index = -1;
-        }
+        self.element.index = -1;
     }
 }
 
