@@ -2,23 +2,19 @@
 #import "BBConditionEmail.h"
 #import "BBFormTextField.h"
 
+#define kRegularExpressionEmail @"^[+\\w\\.\\-']+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{2,})+$"
+
 @implementation BBConditionEmail
 
-
-- (BOOL)check:(BBFormElement *)element;
+- (id)initWithLocalizedViolationString:(NSString *)localizedViolationString
 {
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-    NSString *string = ((BBFormTextFieldElement*)element).value;
-    
-    if (nil == string)
-        string = [NSString string];
-    
-    self.regexString = @"^[+\\w\\.\\-']+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*(\\.[a-zA-Z]{2,})+$";
-    
-    return [super check:element];
+    return [super initWithLocalizedViolationString:localizedViolationString andRegexString:kRegularExpressionEmail];
 }
 
+- (id)init
+{
+    return [super initWithRegexString:kRegularExpressionEmail];
+}
 
 #pragma mark - Localization
 

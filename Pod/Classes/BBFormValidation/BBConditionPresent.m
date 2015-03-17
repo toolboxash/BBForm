@@ -11,27 +11,28 @@
 
 @implementation BBConditionPresent
 
+- (BOOL)isStringPresent:(NSString *)string//check whether the string value is present or not
+{
+    if (!string || string.length == 0 || [string isEqual: [NSNull null]])
+    {
+        return NO;
+    }
+    return YES;
+}
+
 - (BOOL)check:(BBFormElement *)element;
 {
     if ([element isKindOfClass:[BBFormTextFieldElement class]])
     {
         NSString *string = ((BBFormTextFieldElement*)element).value;
     
-        if(!string)
-        {
-            return NO;
-        }
-        return string.length > 0 ? YES : NO;
+        return [self isStringPresent:string];
     }
     if ([element isKindOfClass:[BBFormTextViewElement class]])
     {
         NSString *string = ((BBFormTextViewElement*)element).value;
         
-        if(!string)
-        {
-            return NO;
-        }
-        return string.length > 0 ? YES : NO;
+        return [self isStringPresent:string];
     }
     else if  ([element isKindOfClass:[BBFormDateFieldElement class]])
     {
@@ -50,23 +51,16 @@
         if ((index >=0) && (index < values.count))
         {
             NSString *string = values[index];
-            return string.length > 0 ? YES : NO;
+            return [self isStringPresent:string];
         }
         
         return NO;
     }
     else if  ([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
     {
-        NSArray *values = ((BBFormAutoCompleteFieldElement*)element).values;
-        NSInteger index = ((BBFormAutoCompleteFieldElement*)element).index;
+        NSString *string = ((BBFormAutoCompleteFieldElement*)element).labelText;
         
-        if ((index >=0) && (index < values.count))
-        {
-            NSString *string = values[index];
-            return string.length > 0 ? YES : NO;
-        }
-        
-        return NO;
+        return [self isStringPresent:string];
     }
     return NO;
 }
