@@ -18,7 +18,7 @@
     self.layer.borderWidth = 1.0f;
     self.backgroundColor = [UIColor whiteColor];
     
-    self.state = DPPinDotStateUnselected;
+    self.state = BBPinDotStateUnselected;
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
@@ -46,27 +46,27 @@
 }
 
 
--(void)setState:(DPPinDotState)state
+-(void)setState:(BBPinDotState)state
 {
     [self setState:state animated:NO];
 }
 
--(void)setState:(DPPinDotState)state animated:(BOOL)animated
+-(void)setState:(BBPinDotState)state animated:(BOOL)animated
 {
     _state = state;
     
     void (^stateBlock)() = ^{
         switch (_state) {
                 
-            case DPPinDotStateUnselected:
+            case BBPinDotStateUnselected:
                 self.layer.borderColor = [[BBStyleSettings sharedInstance] unselectedColor].CGColor;
                 self.backgroundColor = [UIColor clearColor];
                 break;
-            case DPPinDotStateHighlighted:
+            case BBPinDotStateHighlighted:
                 self.layer.borderColor = [[BBStyleSettings sharedInstance] highlightedColor].CGColor;
                 self.backgroundColor = [UIColor clearColor];
                 break;
-            case DPPinDotStateSelected:
+            case BBPinDotStateSelected:
                 self.layer.borderColor = [[BBStyleSettings sharedInstance] selectedColor].CGColor;
                 self.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
                 break;

@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 typedef enum : NSUInteger {
-    DPPinDotStateUnselected,
-    DPPinDotStateHighlighted,
-    DPPinDotStateSelected,
-} DPPinDotState;
+    BBPinDotStateUnselected,
+    BBPinDotStateHighlighted,
+    BBPinDotStateSelected,
+} BBPinDotState;
 
 
 @interface BBFormPinDot : UIView
 
-@property (nonatomic, assign) DPPinDotState state;
+@property (nonatomic, assign) BBPinDotState state;
 
--(void)setState:(DPPinDotState)state animated:(BOOL)animated;
+-(void)setState:(BBPinDotState)state animated:(BOOL)animated;
 
 @end

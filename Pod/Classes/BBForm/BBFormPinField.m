@@ -143,15 +143,15 @@
     {
         if (pinDot.tag < length)
         {
-            pinDot.state = DPPinDotStateSelected;
+            pinDot.state = BBPinDotStateSelected;
         }
         else if (((_textfield.isEditing) && pinDot.tag == length))
         {
-            pinDot.state = DPPinDotStateHighlighted;
+            pinDot.state = BBPinDotStateHighlighted;
         }
         else
         {
-            pinDot.state = DPPinDotStateUnselected;
+            pinDot.state = BBPinDotStateUnselected;
         }
     }
 }
