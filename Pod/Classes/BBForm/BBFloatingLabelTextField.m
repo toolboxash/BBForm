@@ -24,6 +24,9 @@
 
 @implementation BBFloatingLabelTextField
 
+@dynamic placeholder;
+@dynamic text;
+
 -(void)setup
 {
     _floatingLabel = [[UILabel alloc] initWithFrame:self.bounds];

@@ -24,6 +24,8 @@
 
 @implementation BBFloatingLabelAutoCompleteField
 
+@dynamic placeholder;
+
 -(void)setup
 {
     _floatingLabel = [[UILabel alloc] initWithFrame:self.bounds];

@@ -16,7 +16,7 @@
 @property (nonatomic, readonly) UILabel *placeholderLabel;
 @property (nonatomic, readonly) UILabel *valueLabel;
 
-@property (nonatomic) /*IBInspectable*/ NSString *placeholder;
-@property (nonatomic) /*IBInspectable*/ NSInteger datePickerMode;
+@property (nonatomic) NSString *placeholder;
+@property (nonatomic) NSInteger datePickerMode;
 
 @end

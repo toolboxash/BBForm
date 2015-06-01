@@ -16,6 +16,6 @@
 @property (nonatomic, readonly) UILabel *placeholderLabel;
 @property (nonatomic, readonly) UILabel *valueLabel;
 
-@property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) NSString *placeholder;
 
 @end

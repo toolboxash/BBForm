@@ -24,6 +24,10 @@
 
 @implementation BBFloatingLabelSelectField
 
+@dynamic placeholder;
+@dynamic placeholderLabel;
+@dynamic valueLabel;
+
 -(void)setup
 {
     // create the additional floating label

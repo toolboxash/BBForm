@@ -11,7 +11,7 @@
 @interface BBFloatingLabelAutoCompleteField : BBFormAutoCompleteField
 
 @property (nonatomic, readonly) UILabel *floatingLabel;
-@property (nonatomic) /*IBInspectable*/ NSString *text;
-@property (nonatomic) /*IBInspectable*/ NSString *placeholder;
+@property (nonatomic) NSString *text;
+@property (nonatomic) NSString *placeholder;
 
 @end
