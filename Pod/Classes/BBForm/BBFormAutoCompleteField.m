@@ -159,6 +159,7 @@
     _textfield.autocorrectionType = UITextAutocorrectionTypeNo;
     
     [self updateSuggestions];
+    [_collectionView reloadData];
 }
 
 - (void)setPlaceholder:(NSString *)placeholder
@@ -229,7 +230,7 @@
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField;
 {
-    if (((self.element.index >=0) && (self.element.index < self.element.values.count)) || (_textfield.text.length == 0))
+    if (((self.element.index >=0) && (self.element.index < self.element.values.count)) || (_textfield.text.length == 0)  || self.element.index < 0)
         return YES;
     return NO;
 }

@@ -103,7 +103,9 @@
     self.element = element;
     self.text = element.value;
     self.placeholder = element.placeholderText;
+    self.placeholderLabel.hidden = (_textview.text.length >0);
 }
+
 
 - (BOOL)canBecomeFirstResponder
 {

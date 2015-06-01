@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="q0t-jh-hgM">
+            <objects>
+                <viewController id="nEy-d3-9wu" customClass="BBViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="tBx-nY-4cc"/>
+                        <viewControllerLayoutGuide type="bottom" id="bcC-7E-yr5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oTp-yD-Pbf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-UJ-D0J" customClass="BBStyleButton">
+                                <rect key="frame" x="81" y="112" width="158" height="31"/>
+                                <state key="normal" title="Non Floating examples">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="HkE-z6-azv" kind="push" id="hcZ-JD-o6l"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGp-9k-k8I" customClass="BBStyleButton">
+                                <rect key="frame" x="79" y="201" width="162" height="31"/>
+                                <state key="normal" title="Floating label examples">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="DZ9-D7-djw" kind="push" id="LSL-Nk-11m"/>
+                                </connections>
+                            </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvZ-v3-TOi">
+                                <rect key="frame" x="190" y="281" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pre-populate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efs-fc-pPd">
+                                <rect key="frame" x="79" y="286" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="bzN-eS-b8j"/>
+                    <connections>
+                        <outlet property="prePopulatedSwitch" destination="DvZ-v3-TOi" id="ld6-VW-dPF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ApE-ap-uID" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="789" y="-479"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ras-4d-ihB">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hle-hk-P54" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="zy2-7s-T13">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="nEy-d3-9wu" kind="relationship" relationship="rootViewController" id="QtA-Zg-4zw"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N91-UE-UqA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="257" y="-479"/>
+        </scene>
+        <!--Non Floating Examples View Controller-->
+        <scene sceneID="4jb-3R-OMV">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="HkE-z6-azv" customClass="BBNonFloatingExamplesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jOm-z8-YA2"/>
+                        <viewControllerLayoutGuide type="bottom" id="sIc-IT-Hx7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="qhw-qR-HcW">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hw2-0W-EOe" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-7s-7m1" customClass="BBFormTextField">
+                                        <rect key="frame" x="20" y="123" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="8ZZ-T8-3rh"/>
+                                            <constraint firstAttribute="height" constant="40" id="X7e-A6-L62"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZw-vH-glq" customClass="BBFormSelectField">
+                                        <rect key="frame" x="20" y="183" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="RNz-TK-2kI"/>
+                                            <constraint firstAttribute="width" constant="280" id="wrV-oq-Xcn"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Select a value"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALF-U1-QeR" customClass="BBFormDateField">
+                                        <rect key="frame" x="20" y="243" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Oc0-dW-Hqd"/>
+                                            <constraint firstAttribute="width" constant="280" id="Ux5-dU-yU5"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrP-cA-E66" customClass="BBFormTextView">
+                                        <rect key="frame" x="20" y="303" width="280" height="120"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="2iH-gk-ZlQ"/>
+                                            <constraint firstAttribute="height" constant="120" id="V2S-xU-c5r"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ1-T9-VOe" customClass="BBFormAutoCompleteField">
+                                        <rect key="frame" x="20" y="437" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="CX8-In-SUq"/>
+                                            <constraint firstAttribute="height" constant="40" id="v6Y-r1-wXm"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9F-zB-39e" customClass="BBStyleButton">
+                                        <rect key="frame" x="20" y="504" width="280" height="40"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.87450980389999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Verify">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verifyPressed:" destination="HkE-z6-azv" eventType="touchUpInside" id="pA9-yf-Qb0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="leading" secondItem="Qdk-7s-7m1" secondAttribute="leading" id="4TW-X1-7er"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="width" secondItem="Qdk-7s-7m1" secondAttribute="width" id="6x9-Ld-ghl"/>
+                                    <constraint firstItem="rrP-cA-E66" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="9zh-XF-MGA"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="centerX" secondItem="xQ1-T9-VOe" secondAttribute="centerX" id="BJi-hc-gat"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="27" id="Cyb-RG-wQW"/>
+                                    <constraint firstItem="Qdk-7s-7m1" firstAttribute="width" secondItem="EZw-vH-glq" secondAttribute="width" id="CzS-Zh-9E5"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qdk-7s-7m1" secondAttribute="trailing" constant="20" id="F0g-A8-Qmd"/>
+                                    <constraint firstItem="Qdk-7s-7m1" firstAttribute="top" secondItem="hw2-0W-EOe" secondAttribute="top" constant="123" id="I0I-gB-8MX"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="height" secondItem="Qdk-7s-7m1" secondAttribute="height" id="Jn4-Zj-yT0"/>
+                                    <constraint firstItem="EZw-vH-glq" firstAttribute="top" secondItem="Qdk-7s-7m1" secondAttribute="bottom" constant="20" id="KVt-Ox-g1G"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="top" secondItem="rrP-cA-E66" secondAttribute="bottom" constant="14" id="NY4-Rh-blE"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="width" secondItem="xQ1-T9-VOe" secondAttribute="width" id="PDq-TV-cT3"/>
+                                    <constraint firstItem="ALF-U1-QeR" firstAttribute="top" secondItem="EZw-vH-glq" secondAttribute="bottom" constant="20" id="Rse-Cg-bG6"/>
+                                    <constraint firstAttribute="bottom" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="91" id="S0C-WY-Znz"/>
+                                    <constraint firstItem="EZw-vH-glq" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="T5V-Bz-jRA"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="height" secondItem="xQ1-T9-VOe" secondAttribute="height" id="XQ8-lW-M1f"/>
+                                    <constraint firstItem="Qdk-7s-7m1" firstAttribute="centerX" secondItem="EZw-vH-glq" secondAttribute="centerX" id="Z7T-Vo-TVZ"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="27" id="e4O-M0-SLN"/>
+                                    <constraint firstItem="Qdk-7s-7m1" firstAttribute="leading" secondItem="hw2-0W-EOe" secondAttribute="leading" constant="20" id="h2P-9f-WR9"/>
+                                    <constraint firstItem="rrP-cA-E66" firstAttribute="top" secondItem="ALF-U1-QeR" secondAttribute="bottom" constant="20" id="wN9-r7-gqB"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="hw2-0W-EOe" secondAttribute="trailing" constant="-16" id="0rF-FO-YbV"/>
+                            <constraint firstItem="hw2-0W-EOe" firstAttribute="leading" secondItem="qhw-qR-HcW" secondAttribute="leadingMargin" constant="-16" id="OAQ-9g-5Rv"/>
+                            <constraint firstItem="sIc-IT-Hx7" firstAttribute="top" secondItem="hw2-0W-EOe" secondAttribute="bottom" id="V80-ed-CfU"/>
+                            <constraint firstItem="hw2-0W-EOe" firstAttribute="top" secondItem="jOm-z8-YA2" secondAttribute="bottom" constant="-64" id="yPd-HY-bRU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qzb-OL-9dM"/>
+                    <connections>
+                        <outlet property="autoTextField" destination="xQ1-T9-VOe" id="Lec-wY-WTp"/>
+                        <outlet property="dateField" destination="ALF-U1-QeR" id="YeD-eW-z9D"/>
+                        <outlet property="selectField" destination="EZw-vH-glq" id="PMp-id-4tr"/>
+                        <outlet property="textField" destination="Qdk-7s-7m1" id="BqD-pM-0yk"/>
+                        <outlet property="textView" destination="rrP-cA-E66" id="bQE-0Y-NRA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QIL-aA-3co" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="-848"/>
+        </scene>
+        <!--Floating Examples View Controller-->
+        <scene sceneID="gib-de-qkR">
+            <objects>
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="DZ9-D7-djw" customClass="BBFloatingExamplesViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eJn-qg-dzc"/>
+                        <viewControllerLayoutGuide type="bottom" id="88A-9w-ECJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="d7S-nu-fwJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nqg-x7-PcI" customClass="TPKeyboardAvoidingScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wk9-z0-Ag5" customClass="BBFloatingLabelTextField">
+                                        <rect key="frame" x="20" y="123" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Mib-0I-xzk"/>
+                                            <constraint firstAttribute="width" constant="280" id="Ntv-Tq-y3h"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uz3-Wy-rqM" customClass="BBFloatingLabelSelectField">
+                                        <rect key="frame" x="20" y="183" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Kb8-46-AaJ"/>
+                                            <constraint firstAttribute="width" constant="280" id="NM8-4E-WNu"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Select a value"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0q-MG-Aec" customClass="BBFloatingLabelDateField">
+                                        <rect key="frame" x="20" y="243" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="GuX-wl-sc3"/>
+                                            <constraint firstAttribute="height" constant="40" id="s5r-aN-6io"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLw-Ey-heL" customClass="BBFloatingLabelTextView">
+                                        <rect key="frame" x="20" y="303" width="280" height="120"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="W2b-cD-4Kl"/>
+                                            <constraint firstAttribute="width" constant="280" id="rup-KR-HXn"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9V0-FJ-LzJ" customClass="BBFloatingLabelAutoCompleteField">
+                                        <rect key="frame" x="20" y="437" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="280" id="JFm-6Y-pqX"/>
+                                            <constraint firstAttribute="height" constant="40" id="QKw-Yh-cKX"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFz-qQ-eKg" customClass="BBStyleButton">
+                                        <rect key="frame" x="20" y="504" width="280" height="40"/>
+                                        <color key="backgroundColor" red="0.30980392159999998" green="0.87450980389999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <state key="normal" title="Verify">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="verifyPressed:" destination="DZ9-D7-djw" eventType="touchUpInside" id="1yi-OK-cBU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="FLw-Ey-heL" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="2N7-eC-At7"/>
+                                    <constraint firstItem="N0q-MG-Aec" firstAttribute="top" secondItem="uz3-Wy-rqM" secondAttribute="bottom" constant="20" id="43F-li-ClB"/>
+                                    <constraint firstItem="9V0-FJ-LzJ" firstAttribute="centerX" secondItem="FLw-Ey-heL" secondAttribute="centerX" id="8H2-MP-fL1"/>
+                                    <constraint firstItem="Wk9-z0-Ag5" firstAttribute="centerX" secondItem="uz3-Wy-rqM" secondAttribute="centerX" id="95v-ba-f0d"/>
+                                    <constraint firstAttribute="bottom" secondItem="9V0-FJ-LzJ" secondAttribute="bottom" constant="91" id="Dyc-Vh-Mwh"/>
+                                    <constraint firstItem="9V0-FJ-LzJ" firstAttribute="top" secondItem="FLw-Ey-heL" secondAttribute="bottom" constant="14" id="E5F-19-8kq"/>
+                                    <constraint firstAttribute="trailing" secondItem="Wk9-z0-Ag5" secondAttribute="trailing" constant="20" id="JWh-Qu-LgD"/>
+                                    <constraint firstItem="Wk9-z0-Ag5" firstAttribute="width" secondItem="uz3-Wy-rqM" secondAttribute="width" id="Jrx-De-6VT"/>
+                                    <constraint firstItem="Wk9-z0-Ag5" firstAttribute="top" secondItem="Nqg-x7-PcI" secondAttribute="top" constant="123" id="LL3-ak-Mgk"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="height" secondItem="9V0-FJ-LzJ" secondAttribute="height" id="TmP-Tr-mgr"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="centerX" secondItem="9V0-FJ-LzJ" secondAttribute="centerX" id="e8y-ko-u0s"/>
+                                    <constraint firstItem="FLw-Ey-heL" firstAttribute="top" secondItem="N0q-MG-Aec" secondAttribute="bottom" constant="20" id="jHw-2J-2Ch"/>
+                                    <constraint firstItem="Wk9-z0-Ag5" firstAttribute="leading" secondItem="Nqg-x7-PcI" secondAttribute="leading" constant="20" id="kQb-ka-3jF"/>
+                                    <constraint firstItem="uz3-Wy-rqM" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="lb9-Dj-saY"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="top" secondItem="9V0-FJ-LzJ" secondAttribute="bottom" constant="27" id="pZf-fc-6Lw"/>
+                                    <constraint firstItem="rFz-qQ-eKg" firstAttribute="width" secondItem="9V0-FJ-LzJ" secondAttribute="width" id="sea-Hp-nl7"/>
+                                    <constraint firstItem="uz3-Wy-rqM" firstAttribute="top" secondItem="Wk9-z0-Ag5" secondAttribute="bottom" constant="20" id="tNB-Hd-5r6"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Nqg-x7-PcI" firstAttribute="leading" secondItem="d7S-nu-fwJ" secondAttribute="leadingMargin" constant="-16" id="07g-sD-XAg"/>
+                            <constraint firstItem="Nqg-x7-PcI" firstAttribute="top" secondItem="eJn-qg-dzc" secondAttribute="bottom" constant="-64" id="7ES-kw-yak"/>
+                            <constraint firstItem="88A-9w-ECJ" firstAttribute="top" secondItem="Nqg-x7-PcI" secondAttribute="bottom" id="Fnj-MX-KEd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Nqg-x7-PcI" secondAttribute="trailing" constant="-16" id="iqc-PU-7Wg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="sOb-3w-j79"/>
+                    <connections>
+                        <outlet property="autoTextField" destination="9V0-FJ-LzJ" id="SZ8-de-Azk"/>
+                        <outlet property="dateField" destination="N0q-MG-Aec" id="FRf-Ir-3y3"/>
+                        <outlet property="selectField" destination="uz3-Wy-rqM" id="tJ4-RN-vI0"/>
+                        <outlet property="textField" destination="Wk9-z0-Ag5" id="thg-QA-PbP"/>
+                        <outlet property="textView" destination="FLw-Ey-heL" id="Pzv-NC-eVo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vSk-PN-GBc" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1329" y="-165"/>
+        </scene>
+    </scenes>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>

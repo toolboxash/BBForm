@@ -19,7 +19,6 @@
     NSLayoutConstraint *floatingLabelCenterConstraint;
 }
 
-
 @end
 
 @implementation BBFloatingLabelTextView
@@ -79,6 +78,17 @@
 {
     _floatingLabel.text = placeholder;
     [super setPlaceholder:placeholder];
+}
+
+-(void)updateWithElement:(BBFormTextViewElement*)element
+{
+    self.element = element;
+    self.text = element.value;
+    self.placeholder = element.placeholderText;
+    if (element.value.length >0)
+    {
+        [self showFloatingLabel:NO];
+    }
 }
 
 -(void)textViewDidChange:(UITextView *)textView

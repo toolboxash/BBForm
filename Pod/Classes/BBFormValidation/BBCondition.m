@@ -1,7 +1,7 @@
 
 #import "BBCondition.h"
 #import "BBFormTextField.h"
-
+#import "BBFormAutoCompleteField.h"
 
 @implementation BBCondition
 
@@ -63,9 +63,19 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
+    NSString *string;
+    if ([element isKindOfClass:[BBFormTextFieldElement class]])
+    {
+        string = ((BBFormTextFieldElement*)element).value;
+    }
+    else if([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
+    {
+        string = ((BBFormAutoCompleteFieldElement*)element).labelText;
+    }
+    else
+    {
         return NO;
-    NSString *string = ((BBFormTextFieldElement*)element).value;
+    }
  
     BOOL success = YES;
     
