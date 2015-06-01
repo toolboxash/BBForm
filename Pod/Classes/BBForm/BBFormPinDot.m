@@ -1,5 +1,5 @@
 //
-//  DPPinDot.m
+//  BBPinDot.m
 //  BBForm
 //
 //  Created by Ashley Thwaites on 07/07/2014.
@@ -7,6 +7,7 @@
 //
 
 #import "BBFormPinDot.h"
+#import "BBStyleSettings.h"
 #import "BBExtras-UIColor.h"
 
 @implementation BBFormPinDot
@@ -58,15 +59,15 @@
         switch (_state) {
                 
             case DPPinDotStateUnselected:
-                self.layer.borderColor = [UIColor colorWithHexString:@"7f7f7f"].CGColor;
+                self.layer.borderColor = [[BBStyleSettings sharedInstance] unselectedColor].CGColor;
                 self.backgroundColor = [UIColor clearColor];
                 break;
             case DPPinDotStateHighlighted:
-                self.layer.borderColor = [UIColor colorWithHexString:@"afafaf"].CGColor;
+                self.layer.borderColor = [[BBStyleSettings sharedInstance] highlightedColor].CGColor;
                 self.backgroundColor = [UIColor clearColor];
                 break;
             case DPPinDotStateSelected:
-                self.layer.borderColor = [UIColor colorWithHexString:@"ffffff"].CGColor;
+                self.layer.borderColor = [[BBStyleSettings sharedInstance] selectedColor].CGColor;
                 self.backgroundColor = [UIColor colorWithHexString:@"ffffff"];
                 break;
             default:

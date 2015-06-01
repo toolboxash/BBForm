@@ -35,6 +35,7 @@
         _seperatorColor = [UIColor colorWithHexString:@"#eaebed"];                  // 234,235,237
         _selectedColor = [UIColor colorWithHexString:@"#47ecf0"];                   // 71,236,240
         _unselectedColor = [UIColor colorWithHexString:@"#c1c6ca"];                 // 193,198,202
+        _highlightedColor = [UIColor colorWithHexString:@"#d1d6da"];                 // 193,198,202
     }
     return self;
 }

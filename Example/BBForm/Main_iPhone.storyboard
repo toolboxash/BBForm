@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -91,7 +91,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-7s-7m1" customClass="BBFormTextField">
-                                        <rect key="frame" x="20" y="123" width="280" height="40"/>
+                                        <rect key="frame" x="20" y="80" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="8ZZ-T8-3rh"/>
@@ -107,7 +107,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZw-vH-glq" customClass="BBFormSelectField">
-                                        <rect key="frame" x="20" y="183" width="280" height="40"/>
+                                        <rect key="frame" x="20" y="140" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RNz-TK-2kI"/>
@@ -124,7 +124,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALF-U1-QeR" customClass="BBFormDateField">
-                                        <rect key="frame" x="20" y="243" width="280" height="40"/>
+                                        <rect key="frame" x="20" y="200" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Oc0-dW-Hqd"/>
@@ -141,7 +141,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrP-cA-E66" customClass="BBFormTextView">
-                                        <rect key="frame" x="20" y="303" width="280" height="120"/>
+                                        <rect key="frame" x="20" y="260" width="280" height="120"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="2iH-gk-ZlQ"/>
@@ -158,7 +158,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ1-T9-VOe" customClass="BBFormAutoCompleteField">
-                                        <rect key="frame" x="20" y="437" width="280" height="40"/>
+                                        <rect key="frame" x="20" y="394" width="280" height="40"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="CX8-In-SUq"/>
@@ -171,6 +171,23 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                 <integer key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8i-Pi-x8J" customClass="BBFormPinField">
+                                        <rect key="frame" x="20" y="449" width="280" height="40"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="Ypj-dL-nUg"/>
+                                            <constraint firstAttribute="width" constant="280" id="cWV-9b-VW7"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a date"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9F-zB-39e" customClass="BBStyleButton">
@@ -189,20 +206,21 @@
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="width" secondItem="Qdk-7s-7m1" secondAttribute="width" id="6x9-Ld-ghl"/>
                                     <constraint firstItem="rrP-cA-E66" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="9zh-XF-MGA"/>
                                     <constraint firstItem="M9F-zB-39e" firstAttribute="centerX" secondItem="xQ1-T9-VOe" secondAttribute="centerX" id="BJi-hc-gat"/>
-                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="27" id="Cyb-RG-wQW"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="width" secondItem="EZw-vH-glq" secondAttribute="width" id="CzS-Zh-9E5"/>
                                     <constraint firstAttribute="trailing" secondItem="Qdk-7s-7m1" secondAttribute="trailing" constant="20" id="F0g-A8-Qmd"/>
-                                    <constraint firstItem="Qdk-7s-7m1" firstAttribute="top" secondItem="hw2-0W-EOe" secondAttribute="top" constant="123" id="I0I-gB-8MX"/>
+                                    <constraint firstItem="Qdk-7s-7m1" firstAttribute="top" secondItem="hw2-0W-EOe" secondAttribute="top" constant="80" id="I0I-gB-8MX"/>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="height" secondItem="Qdk-7s-7m1" secondAttribute="height" id="Jn4-Zj-yT0"/>
                                     <constraint firstItem="EZw-vH-glq" firstAttribute="top" secondItem="Qdk-7s-7m1" secondAttribute="bottom" constant="20" id="KVt-Ox-g1G"/>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="top" secondItem="rrP-cA-E66" secondAttribute="bottom" constant="14" id="NY4-Rh-blE"/>
+                                    <constraint firstItem="xQ1-T9-VOe" firstAttribute="centerX" secondItem="B8i-Pi-x8J" secondAttribute="centerX" id="Ogf-k0-tft"/>
                                     <constraint firstItem="M9F-zB-39e" firstAttribute="width" secondItem="xQ1-T9-VOe" secondAttribute="width" id="PDq-TV-cT3"/>
                                     <constraint firstItem="ALF-U1-QeR" firstAttribute="top" secondItem="EZw-vH-glq" secondAttribute="bottom" constant="20" id="Rse-Cg-bG6"/>
                                     <constraint firstAttribute="bottom" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="91" id="S0C-WY-Znz"/>
+                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="B8i-Pi-x8J" secondAttribute="bottom" constant="15" id="SwE-ef-FAm"/>
                                     <constraint firstItem="EZw-vH-glq" firstAttribute="centerX" secondItem="ALF-U1-QeR" secondAttribute="centerX" id="T5V-Bz-jRA"/>
                                     <constraint firstItem="M9F-zB-39e" firstAttribute="height" secondItem="xQ1-T9-VOe" secondAttribute="height" id="XQ8-lW-M1f"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="centerX" secondItem="EZw-vH-glq" secondAttribute="centerX" id="Z7T-Vo-TVZ"/>
-                                    <constraint firstItem="M9F-zB-39e" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="27" id="e4O-M0-SLN"/>
+                                    <constraint firstItem="B8i-Pi-x8J" firstAttribute="top" secondItem="xQ1-T9-VOe" secondAttribute="bottom" constant="15" id="aQ6-YJ-Blh"/>
                                     <constraint firstItem="Qdk-7s-7m1" firstAttribute="leading" secondItem="hw2-0W-EOe" secondAttribute="leading" constant="20" id="h2P-9f-WR9"/>
                                     <constraint firstItem="rrP-cA-E66" firstAttribute="top" secondItem="ALF-U1-QeR" secondAttribute="bottom" constant="20" id="wN9-r7-gqB"/>
                                 </constraints>
@@ -220,6 +238,7 @@
                     <connections>
                         <outlet property="autoTextField" destination="xQ1-T9-VOe" id="Lec-wY-WTp"/>
                         <outlet property="dateField" destination="ALF-U1-QeR" id="YeD-eW-z9D"/>
+                        <outlet property="pinField" destination="B8i-Pi-x8J" id="7v1-MJ-3X2"/>
                         <outlet property="selectField" destination="EZw-vH-glq" id="PMp-id-4tr"/>
                         <outlet property="textField" destination="Qdk-7s-7m1" id="BqD-pM-0yk"/>
                         <outlet property="textView" destination="rrP-cA-E66" id="bQE-0Y-NRA"/>

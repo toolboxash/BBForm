@@ -12,6 +12,7 @@
 #import "BBFormTextField.h"
 #import "BBFormTextView.h"
 #import "BBFormAutoCompleteField.h"
+#import "BBFormPinField.h"
 #import "BBFormValidator.h"
 
 @interface BBNonFloatingExamplesViewController () <BBFormElementDelegate>
@@ -21,6 +22,7 @@
     BBFormDateFieldElement *dateFieldElement;
     BBFormTextViewElement *textViewElement;
     BBFormAutoCompleteFieldElement *autoCompleteElement;
+    BBFormPinFieldElement *pinElement;
 }
 
 @property (nonatomic, strong) IBOutlet BBFormDateField *dateField;
@@ -28,6 +30,7 @@
 @property (nonatomic, strong) IBOutlet BBFormTextField *textField;
 @property (nonatomic, strong) IBOutlet BBFormTextView *textView;
 @property (nonatomic, strong) IBOutlet BBFormAutoCompleteField *autoTextField;
+@property (nonatomic, strong) IBOutlet BBFormPinField *pinField;
 
 @end
 
@@ -43,7 +46,8 @@
     textViewElement = [BBFormTextViewElement textViewElementWithID:3 placeholderText:@"Enter some text" value:nil delegate:nil];
     autoCompleteElement = [BBFormAutoCompleteFieldElement selectElementWithID:1 labelText:@"Select Option" values:@[@"Dog",@"Cat",@"Rabbity Rabbit",@"Horse",@"Dog",@"Cat",@"Rabbit",@"Horse",@"Dog",@"Cat",@"Rabbit",@"Horse"] delegate:self];
     autoCompleteElement.displayAllWhenBlank = YES;
-    
+    pinElement = [BBFormPinFieldElement pinFieldElementWithID:4 pinLength:5 delegate:self];
+
     if (self.prePopulate)
     {
         textFieldElement.value = @"Some text";
@@ -58,6 +62,7 @@
     [_dateField updateWithElement:dateFieldElement];
     [_textView updateWithElement:textViewElement];
     [_autoTextField updateWithElement:autoCompleteElement];
+    [_pinField updateWithElement:pinElement];
     
     BBConditionPresent *presentCondition = [[BBConditionPresent alloc] initWithLocalizedViolationString:NSLocalizedString(@"Please complete all fields", @"Please complete all fields")];
     textFieldElement.validator = [[BBValidator alloc] initWithCondition:presentCondition,nil];

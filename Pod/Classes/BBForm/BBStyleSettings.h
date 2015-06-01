@@ -20,6 +20,7 @@
 
 // something that can be clicked
 @property (strong, readwrite) UIColor *selectedColor;
+@property (strong, readwrite) UIColor *highlightedColor;
 @property (strong, readwrite) UIColor *unselectedColor;
 @property (strong, readwrite) UIColor *backgroundColor;
 
