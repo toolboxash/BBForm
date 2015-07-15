@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BBForm"
-  s.version          = "0.1.3"
+  s.version          = "0.1.4"
   s.summary          = "A simple form solution for iOS with validation"
 #  s.description      = <<-DESC
 #                       An optional longer description of BBForm
