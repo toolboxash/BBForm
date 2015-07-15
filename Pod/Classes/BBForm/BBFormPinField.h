@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BBFormElement.h"
 #import "BBStyleView.h"
+#import "BBFormPinDot.h"
 
 @interface BBFormPinFieldElement : BBFormElement
 
@@ -26,6 +27,7 @@
 @property (nonatomic, strong) BBFormPinFieldElement* element;
 @property (nonatomic, readonly) UITextField *textfield;
 
+-(BBFormPinDot*)createDotWithTag:(NSInteger)tag;
 -(void)updateWithElement:(BBFormPinFieldElement*)element;
 
 @end

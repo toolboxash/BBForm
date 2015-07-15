@@ -7,7 +7,6 @@
 //
 
 #import "BBFormPinField.h"
-#import "BBFormPinDot.h"
 #import "PureLayout.h"
 #import "PureLayoutDefines.h"
 
@@ -71,6 +70,14 @@
     [insideTapGestureRecognizer.view removeGestureRecognizer:insideTapGestureRecognizer];
 }
 
+// override this to support createing subclassed dots
+-(BBFormPinDot*)createDotWithTag:(NSInteger)tag
+{
+    BBFormPinDot *dot = [BBFormPinDot new];
+    dot.tag = tag;
+    return dot;
+}
+
 -(void)updateWithElement:(BBFormPinFieldElement*)element
 {
     self.element = element;
@@ -86,8 +93,7 @@
         NSMutableArray *dots = [NSMutableArray arrayWithCapacity:element.pinLength];
         for (int i=0;i < element.pinLength; i++)
         {
-            BBFormPinDot *dot = [BBFormPinDot new];
-            dot.tag = i;
+            BBFormPinDot *dot = [self createDotWithTag:i];
             [dots addObject:dot];
             [self addSubview:dot];
         }
