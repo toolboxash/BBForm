@@ -58,9 +58,16 @@
     }
     else if  ([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
     {
-        NSString *string = ((BBFormAutoCompleteFieldElement*)element).labelText;
+        NSArray *values = ((BBFormAutoCompleteFieldElement*)element).values;
+        NSInteger index = ((BBFormAutoCompleteFieldElement*)element).index;
         
-        return [self isStringPresent:string];
+        if ((index >=0) && (index < values.count))
+        {
+            NSString *string = values[index];
+            return string.length > 0 ? YES : NO;
+        }
+        
+        return NO;
     }
     return NO;
 }
