@@ -67,6 +67,23 @@
     return element;
 }
 
+-(NSString*)valueAsString
+{
+    
+    NSString *string = self.value;
+    
+    if ( self.indexRequired)
+    {
+        string = nil;
+        if ((self.index >=0) && (self.index < self.values.count))
+        {
+            string = self.values[self.index];
+        }
+    }
+
+    return string;
+}
+
 @end
 
 
@@ -151,10 +168,8 @@
 {
     self.element = element;
     self.placeholder = element.labelText;
-    if ((element.index >=0) && (element.index < element.values.count))
-        _textfield.text = [self.element.values objectAtIndex:element.index];
-    else
-        _textfield.text = element.value;
+    
+    _textfield.text = [element valueAsString];
     _textfield.keyboardType = UIKeyboardTypeDefault;
     _textfield.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     _textfield.autocorrectionType = UITextAutocorrectionTypeNo;

@@ -25,33 +25,29 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if ([element isKindOfClass:[BBFormTextFieldElement class]])
-    {
-        NSString *string = ((BBFormTextFieldElement*)element).value;
-        BOOL success = NO;
-        
-        if (0 == _range.location
-            && 0 == _range.length)
-            success = YES;
-        
-        if (((BBFormTextFieldElement*)element).inputType == BBTextInputTypeNumber)
-        {
-            success = NSLocationInRange([string integerValue], _range);
-        }
-        else
-        {
-            success = NSLocationInRange(string.length, _range);
-        }
-        
-        return success;
-    }
-    else if ([element isKindOfClass:[BBFormSelectFieldElement class]])
+    if (0 == _range.location && 0 == _range.length)
+        return YES;
+    
+    // for select type elements we can check the index
+    if ([element isKindOfClass:[BBFormSelectFieldElement class]])
     {
         NSInteger value = ((BBFormSelectFieldElement*)element).index;
         return ((value >= _range.location) && (value <= (_range.location + _range.location)));
     }
-        
-    return NO;
+    
+    NSString *string = [element valueAsString];
+    if (!string || string.length == 0 || [string isEqual: [NSNull null]])
+        return NO;
+
+    // for number text entry we can check the numeric is in the range
+    if ([element isKindOfClass:[BBFormTextFieldElement class]] &&
+        ((BBFormTextFieldElement*)element).inputType == BBTextInputTypeNumber)
+    {
+        return NSLocationInRange([string integerValue], _range);
+    }
+    
+    // for everything else lets check the length
+    return NSLocationInRange(string.length, _range);
 }
 
 #pragma mark - Localization

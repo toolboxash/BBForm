@@ -30,5 +30,7 @@
 @property (nonatomic, assign) id<BBFormElementDelegate> delegate;
 @property (nonatomic, assign) NSInteger elementID;
 
+-(NSString*)valueAsString;
+
 @end
 

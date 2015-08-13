@@ -63,20 +63,7 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    NSString *string;
-    if ([element isKindOfClass:[BBFormTextFieldElement class]])
-    {
-        string = ((BBFormTextFieldElement*)element).value;
-    }
-    else if([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
-    {
-        string = ((BBFormAutoCompleteFieldElement*)element).labelText;
-    }
-    else
-    {
-        return NO;
-    }
- 
+    NSString *string = [element valueAsString]; 
     BOOL success = YES;
     
     if(!string)

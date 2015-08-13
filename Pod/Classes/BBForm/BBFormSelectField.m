@@ -43,6 +43,12 @@
     return element;
 }
 
+-(NSString*)valueAsString
+{
+    if ((self.index >=0) && (self.index < self.values.count))
+        return [self.values objectAtIndex:self.index];
+    return nil;
+}
 
 @end
 
@@ -149,10 +155,7 @@
 {
     self.element = element;
     self.placeholder = element.labelText;
-    if ((element.index >=0) && (element.index < element.values.count))
-        self.valueLabel.text = [self.element.values objectAtIndex:element.index];
-    else
-        self.valueLabel.text = nil;
+    self.valueLabel.text = [element valueAsString];
 }
 
 - (void)onTapInside:(UIGestureRecognizer*)sender

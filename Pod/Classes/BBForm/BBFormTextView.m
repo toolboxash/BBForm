@@ -29,7 +29,13 @@
     return element;
 }
 
+-(NSString*)valueAsString
+{
+    return self.value;
+}
+
 @end
+
 
 
 @interface BBFormTextView ()

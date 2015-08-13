@@ -12,11 +12,8 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-    NSString *string = ((BBFormTextFieldElement*)element).value;
-    
-    if (nil == string || [string isEqualToString: @""])
+    NSString *string = [element valueAsString];
+    if (!string || string.length == 0 || [string isEqual: [NSNull null]])
         return NO;
     
     NSString *pattern = REGEX_PATTERN;

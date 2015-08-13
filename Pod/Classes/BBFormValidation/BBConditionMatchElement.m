@@ -23,15 +23,8 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if (![element isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-
-    if (![self.matchElement isKindOfClass:[BBFormTextFieldElement class]])
-        return NO;
-    
-    
-    NSString *string = ((BBFormTextFieldElement*)element).value;
-    NSString *matchString = ((BBFormTextFieldElement*)self.matchElement).value;
+    NSString *string = [element valueAsString];
+    NSString *matchString = [((BBFormTextFieldElement*)self.matchElement) valueAsString];
 
     return [string isEqualToString:matchString];
 }

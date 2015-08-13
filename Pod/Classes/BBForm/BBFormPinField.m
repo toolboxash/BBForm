@@ -21,6 +21,11 @@
     return element;
 }
 
+-(NSString*)valueAsString
+{
+    return self.value;
+}
+
 @end
 
 @interface BBFormPinField () <UITextFieldDelegate>

@@ -22,59 +22,12 @@
 
 - (BOOL)check:(BBFormElement *)element;
 {
-    if ([element isKindOfClass:[BBFormTextFieldElement class]])
+    NSString *string = [element valueAsString];
+    if (!string || string.length == 0 || [string isEqual: [NSNull null]])
     {
-        NSString *string = ((BBFormTextFieldElement*)element).value;
-    
-        return [self isStringPresent:string];
-    }
-    if ([element isKindOfClass:[BBFormTextViewElement class]])
-    {
-        NSString *string = ((BBFormTextViewElement*)element).value;
-        
-        return [self isStringPresent:string];
-    }
-    else if  ([element isKindOfClass:[BBFormDateFieldElement class]])
-    {
-        NSDate *date = ((BBFormDateFieldElement*)element).date;
-        
-        if(date != nil)
-        {
-            return YES;
-        }        
-    }
-    else if  ([element isKindOfClass:[BBFormSelectFieldElement class]])
-    {
-        NSArray *values = ((BBFormSelectFieldElement*)element).values;
-        NSInteger index = ((BBFormSelectFieldElement*)element).index;
-        
-        if ((index >=0) && (index < values.count))
-        {
-            NSString *string = values[index];
-            return [self isStringPresent:string];
-        }
-        
         return NO;
     }
-    else if  ([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
-    {
-        NSString *string = ((BBFormAutoCompleteFieldElement*)element).value;
-        
-        if ( ((BBFormAutoCompleteFieldElement*)element).indexRequired)
-        {
-            NSArray *values = ((BBFormSelectFieldElement*)element).values;
-            NSInteger index = ((BBFormSelectFieldElement*)element).index;
-            
-            string = nil;
-            if ((index >=0) && (index < values.count))
-            {
-                string = values[index];
-            }            
-        }
-                
-        return [self isStringPresent:string];
-    }
-    return NO;
+    return YES;
 }
 
 

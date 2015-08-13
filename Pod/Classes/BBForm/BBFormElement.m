@@ -18,4 +18,10 @@
     return element;
 }
 
+// subclass's must implement this
+-(NSString*)valueAsString
+{
+    return nil;
+}
+
 @end

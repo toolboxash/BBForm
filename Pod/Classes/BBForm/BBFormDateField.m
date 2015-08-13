@@ -36,6 +36,44 @@
     return element;
 }
 
+-(NSString*)valueAsString
+{
+    if (self.formatter)
+    {
+        return [self.formatter stringFromDate:self.date];
+    }
+    else
+    {
+        
+        switch (self.datePickerMode) {
+            case UIDatePickerModeDate:
+                return [NSDateFormatter localizedStringFromDate:self.date
+                                                      dateStyle:NSDateFormatterShortStyle
+                                                      timeStyle:NSDateFormatterNoStyle];
+                break;
+                
+            case UIDatePickerModeTime:
+                return [NSDateFormatter localizedStringFromDate:self.date
+                                                      dateStyle:NSDateFormatterNoStyle
+                                                      timeStyle:NSDateFormatterShortStyle];
+                break;
+                
+            case UIDatePickerModeCountDownTimer:
+                // not supported
+                 break;
+                
+            case UIDatePickerModeDateAndTime:
+            default:
+                return  [NSDateFormatter localizedStringFromDate:self.date
+                                                       dateStyle:NSDateFormatterShortStyle
+                                                       timeStyle:NSDateFormatterShortStyle];
+                break;
+        }
+    }
+    
+    return [super valueAsString];
+}
+
 @end
 
 
@@ -149,7 +187,7 @@
 
     if (element.date)
         _datePicker.date = element.date;
-    [self setDateText];
+    _valueLabel.text = [element valueAsString];
 }
 
 - (void)onTapInside:(UIGestureRecognizer*)sender
@@ -190,69 +228,13 @@
 -(void)selectedDateDidChange
 {
     // update the value label with formatted date
-    [self setDateText];
     _element.date = _datePicker.date;
+    _valueLabel.text = [_element valueAsString];
     if ([_element.delegate respondsToSelector:@selector(formElementDidChangeValue:)])
     {
         [(id<BBFormElementDelegate>)_element.delegate formElementDidChangeValue:_element];
     }
 }
-
--(void)setDateText
-{
-    //    if (self.date == nil)
-    //    {
-    //        self.valueLabel.text = @" ";
-    //        return;
-    //    }
-    
-    if (_element.formatter)
-    {
-        _valueLabel.text = [_element.formatter stringFromDate:_datePicker.date];
-    }
-    else
-    {
-        
-        switch (_datePicker.datePickerMode) {
-            case UIDatePickerModeDate:
-                _valueLabel.text = [NSDateFormatter localizedStringFromDate:_datePicker.date
-                                                                  dateStyle:NSDateFormatterShortStyle
-                                                                  timeStyle:NSDateFormatterNoStyle];
-                break;
-                
-            case UIDatePickerModeTime:
-                _valueLabel.text = [NSDateFormatter localizedStringFromDate:_datePicker.date
-                                                                  dateStyle:NSDateFormatterNoStyle
-                                                                  timeStyle:NSDateFormatterShortStyle];
-                break;
-                
-            case UIDatePickerModeCountDownTimer:
-                if (_datePicker.countDownDuration == 0)
-                {
-                    _valueLabel.text = NSLocalizedString(@"0 minutes", @"0 minutes");
-                } else {
-                    int hours = (int)(_datePicker.countDownDuration / 3600);
-                    int minutes = (int)((_datePicker.countDownDuration - hours * 3600) / 60);
-                    
-                    _valueLabel.text = [NSString stringWithFormat:
-                                        NSLocalizedString(@"%d hours, %d min",
-                                                          @"datepicker countdown hours and minutes"),
-                                        hours,
-                                        minutes];
-                }
-                break;
-                
-            case UIDatePickerModeDateAndTime:
-            default:
-                _valueLabel.text = [NSDateFormatter localizedStringFromDate:_datePicker.date
-                                                                  dateStyle:NSDateFormatterShortStyle
-                                                                  timeStyle:NSDateFormatterShortStyle];
-                break;
-        }
-    }
-}
-
-
 
 -(NSString*)text
 {

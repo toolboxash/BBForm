@@ -52,6 +52,11 @@
     return element;
 }
 
+-(NSString*)valueAsString
+{
+    return self.value;
+}
+
 @end
 
 
