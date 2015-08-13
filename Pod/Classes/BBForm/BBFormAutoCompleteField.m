@@ -46,6 +46,7 @@
 
 @end
 
+
 @implementation BBFormAutoCompleteFieldElement
 
 + (id)selectElementWithID:(NSInteger)elementID labelText:(NSString *)labelText values:(NSArray*)values delegate:(id<BBFormElementDelegate>)delegate;
@@ -153,7 +154,7 @@
     if ((element.index >=0) && (element.index < element.values.count))
         _textfield.text = [self.element.values objectAtIndex:element.index];
     else
-        _textfield.text = nil;
+        _textfield.text = element.value;
     _textfield.keyboardType = UIKeyboardTypeDefault;
     _textfield.autocapitalizationType = UITextAutocapitalizationTypeSentences;
     _textfield.autocorrectionType = UITextAutocorrectionTypeNo;
@@ -204,6 +205,7 @@
     {
         self.element.index = -1;
     }
+    self.element.value = _textfield.text;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField

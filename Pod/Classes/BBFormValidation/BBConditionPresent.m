@@ -58,16 +58,21 @@
     }
     else if  ([element isKindOfClass:[BBFormAutoCompleteFieldElement class]])
     {
-        NSArray *values = ((BBFormAutoCompleteFieldElement*)element).values;
-        NSInteger index = ((BBFormAutoCompleteFieldElement*)element).index;
+        NSString *string = ((BBFormAutoCompleteFieldElement*)element).value;
         
-        if ((index >=0) && (index < values.count))
+        if ( ((BBFormAutoCompleteFieldElement*)element).indexRequired)
         {
-            NSString *string = values[index];
-            return string.length > 0 ? YES : NO;
+            NSArray *values = ((BBFormSelectFieldElement*)element).values;
+            NSInteger index = ((BBFormSelectFieldElement*)element).index;
+            
+            string = nil;
+            if ((index >=0) && (index < values.count))
+            {
+                string = values[index];
+            }            
         }
-        
-        return NO;
+                
+        return [self isStringPresent:string];
     }
     return NO;
 }

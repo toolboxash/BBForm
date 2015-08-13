@@ -43,6 +43,7 @@
     textViewElement = [BBFormTextViewElement textViewElementWithID:3 placeholderText:@"Enter some text" value:nil delegate:nil];
     autoCompleteElement = [BBFormAutoCompleteFieldElement selectElementWithID:1 labelText:@"Select Option" values:@[@"Dog",@"Cat",@"Rabbity Rabbit",@"Horse",@"Dog",@"Cat",@"Rabbit",@"Horse",@"Dog",@"Cat",@"Rabbit",@"Horse"] delegate:self];
     autoCompleteElement.displayAllWhenBlank = YES;
+    autoCompleteElement.indexRequired = YES;
 
     if (self.prePopulate)
     {

@@ -20,6 +20,9 @@
 @property (nonatomic, assign) NSInteger originalIndex;
 @property (nonatomic, retain) NSArray *values;
 @property (nonatomic, assign) BOOL displayAllWhenBlank;
+@property (nonatomic, assign) BOOL indexRequired;
+
+@property (nonatomic, copy)  NSString* value;
 
 @end
 
