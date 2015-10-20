@@ -7,11 +7,15 @@
 //
 
 #import "BBViewController.h"
+#import "BBForm.h"
 #import "BBFormViewController.h"
 
-@interface BBViewController ()
+@interface BBViewController () <BBFormElementDelegate>
+{
+    BBFormSwitchFieldElement    *switchFormElement;
+}
 
-@property (weak, nonatomic) IBOutlet UISwitch *prePopulatedSwitch;
+@property (weak, nonatomic) IBOutlet BBFormSwitchField  *switchField;
 
 @end
 
@@ -19,7 +23,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    switchFormElement = [BBFormSwitchFieldElement switchFieldElementWithID:0 labelText:@"Pre populated" value:NO delegate:self];
+    [_switchField updateWithElement:switchFormElement];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -37,7 +43,7 @@
     if ([segue.destinationViewController isKindOfClass:[BBFormViewController class]])
     {
         BBFormViewController *bfvc = (BBFormViewController*)segue.destinationViewController;
-        bfvc.prePopulate = _prePopulatedSwitch.on;
+        bfvc.prePopulate = switchFormElement.value;
     }
 }
 

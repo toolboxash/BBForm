@@ -9,7 +9,6 @@
 #import "BBFormAutoCompleteField.h"
 #import "BBStyleSettings.h"
 #import "PureLayout.h"
-#import "PureLayoutDefines.h"
 #import "BBExtras-UIView.h"
 
 @interface BBAutoCompleteCell : UICollectionViewCell

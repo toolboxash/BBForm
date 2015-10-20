@@ -1,10 +1,10 @@
 PODS:
-  - BBForm (0.1.4):
+  - BBForm (0.1.7):
     - PureLayout
-  - Expecta (1.0.2)
-  - PureLayout (2.0.6)
-  - Specta (1.0.3)
-  - TPKeyboardAvoiding (1.2.9)
+  - Expecta (1.0.3)
+  - PureLayout (3.0.1)
+  - Specta (1.0.4)
+  - TPKeyboardAvoiding (1.2.10)
 
 DEPENDENCIES:
   - BBForm (from `../`)
@@ -17,10 +17,10 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  BBForm: 91ad6fbb36ab061908075011c33351b52158e49b
-  Expecta: 54e8a3530add08f4f0208c111355eda7cde74a53
-  PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
-  Specta: cf3e4188cf35375c3ee2cd03f8db8f1f4ef98234
-  TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
+  BBForm: 73f9cc24317a3ae181c19af44641cf1da87816e4
+  Expecta: 9d1bff6c8b0eeee73a166a2ee898892478927a15
+  PureLayout: f35f5384c9c4e4479df041dbe33ad7577b71ddfb
+  Specta: 69bb134672aae190a1379ff91df07dad8dd1f869
+  TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
 
 COCOAPODS: 0.38.2

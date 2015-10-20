@@ -8,7 +8,6 @@
 
 #import "BBFormPinField.h"
 #import "PureLayout.h"
-#import "PureLayoutDefines.h"
 
 @implementation BBFormPinFieldElement
 

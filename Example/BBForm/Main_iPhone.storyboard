@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="hle-hk-P54">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -18,8 +18,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-UJ-D0J" customClass="BBStyleButton">
-                                <rect key="frame" x="81" y="112" width="158" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sv7-UJ-D0J" customClass="BBStyleButton">
+                                <rect key="frame" x="82" y="112" width="156" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Non Floating examples">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -27,8 +28,9 @@
                                     <segue destination="HkE-z6-azv" kind="push" id="hcZ-JD-o6l"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGp-9k-k8I" customClass="BBStyleButton">
-                                <rect key="frame" x="79" y="201" width="162" height="31"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sGp-9k-k8I" customClass="BBStyleButton">
+                                <rect key="frame" x="80" y="182" width="161" height="30"/>
+                                <animations/>
                                 <state key="normal" title="Floating label examples">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -36,21 +38,30 @@
                                     <segue destination="DZ9-D7-djw" kind="push" id="LSL-Nk-11m"/>
                                 </connections>
                             </button>
-                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DvZ-v3-TOi">
-                                <rect key="frame" x="190" y="281" width="51" height="31"/>
-                            </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Pre-populate" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efs-fc-pPd">
-                                <rect key="frame" x="79" y="286" width="100" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fmi-cI-qzb" customClass="BBFormSwitchField">
+                                <rect key="frame" x="36" y="252" width="248" height="40"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oTU-Dz-Iyn"/>
+                                </constraints>
+                            </view>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="Fmi-cI-qzb" secondAttribute="trailing" constant="20" id="4Tp-gc-73I"/>
+                            <constraint firstItem="sGp-9k-k8I" firstAttribute="centerX" secondItem="Sv7-UJ-D0J" secondAttribute="centerX" id="KAw-5g-Ibj"/>
+                            <constraint firstItem="Fmi-cI-qzb" firstAttribute="top" secondItem="sGp-9k-k8I" secondAttribute="bottom" constant="40" id="Qug-IL-FVO"/>
+                            <constraint firstItem="Sv7-UJ-D0J" firstAttribute="centerX" secondItem="oTp-yD-Pbf" secondAttribute="centerX" id="cxc-sb-e28"/>
+                            <constraint firstItem="Fmi-cI-qzb" firstAttribute="leading" secondItem="oTp-yD-Pbf" secondAttribute="leadingMargin" constant="20" id="nUy-1D-KSi"/>
+                            <constraint firstItem="sGp-9k-k8I" firstAttribute="top" secondItem="Sv7-UJ-D0J" secondAttribute="bottom" constant="40" id="xdn-6z-Bdd"/>
+                            <constraint firstItem="Sv7-UJ-D0J" firstAttribute="top" secondItem="tBx-nY-4cc" secondAttribute="bottom" constant="48" id="ycC-uC-JoV"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="bzN-eS-b8j"/>
                     <connections>
-                        <outlet property="prePopulatedSwitch" destination="DvZ-v3-TOi" id="ld6-VW-dPF"/>
+                        <outlet property="switchField" destination="Fmi-cI-qzb" id="RSg-gE-SxS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ApE-ap-uID" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,6 +76,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="zy2-7s-T13">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -92,6 +104,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qdk-7s-7m1" customClass="BBFormTextField">
                                         <rect key="frame" x="20" y="80" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="8ZZ-T8-3rh"/>
@@ -108,6 +121,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZw-vH-glq" customClass="BBFormSelectField">
                                         <rect key="frame" x="20" y="140" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="RNz-TK-2kI"/>
@@ -125,6 +139,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ALF-U1-QeR" customClass="BBFormDateField">
                                         <rect key="frame" x="20" y="200" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Oc0-dW-Hqd"/>
@@ -142,6 +157,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rrP-cA-E66" customClass="BBFormTextView">
                                         <rect key="frame" x="20" y="260" width="280" height="120"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="2iH-gk-ZlQ"/>
@@ -159,6 +175,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ1-T9-VOe" customClass="BBFormAutoCompleteField">
                                         <rect key="frame" x="20" y="394" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="CX8-In-SUq"/>
@@ -175,6 +192,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B8i-Pi-x8J" customClass="BBFormPinField">
                                         <rect key="frame" x="20" y="449" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Ypj-dL-nUg"/>
@@ -192,6 +210,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9F-zB-39e" customClass="BBStyleButton">
                                         <rect key="frame" x="20" y="504" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.30980392159999998" green="0.87450980389999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Verify">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -201,6 +220,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <constraints>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="leading" secondItem="Qdk-7s-7m1" secondAttribute="leading" id="4TW-X1-7er"/>
                                     <constraint firstItem="xQ1-T9-VOe" firstAttribute="width" secondItem="Qdk-7s-7m1" secondAttribute="width" id="6x9-Ld-ghl"/>
@@ -226,6 +246,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="hw2-0W-EOe" secondAttribute="trailing" constant="-16" id="0rF-FO-YbV"/>
@@ -265,6 +286,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wk9-z0-Ag5" customClass="BBFloatingLabelTextField">
                                         <rect key="frame" x="20" y="123" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Mib-0I-xzk"/>
@@ -281,6 +303,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uz3-Wy-rqM" customClass="BBFloatingLabelSelectField">
                                         <rect key="frame" x="20" y="183" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="Kb8-46-AaJ"/>
@@ -298,6 +321,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N0q-MG-Aec" customClass="BBFloatingLabelDateField">
                                         <rect key="frame" x="20" y="243" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="GuX-wl-sc3"/>
@@ -315,6 +339,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FLw-Ey-heL" customClass="BBFloatingLabelTextView">
                                         <rect key="frame" x="20" y="303" width="280" height="120"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="W2b-cD-4Kl"/>
@@ -332,6 +357,7 @@
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9V0-FJ-LzJ" customClass="BBFloatingLabelAutoCompleteField">
                                         <rect key="frame" x="20" y="437" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="280" id="JFm-6Y-pqX"/>
@@ -348,6 +374,7 @@
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rFz-qQ-eKg" customClass="BBStyleButton">
                                         <rect key="frame" x="20" y="504" width="280" height="40"/>
+                                        <animations/>
                                         <color key="backgroundColor" red="0.30980392159999998" green="0.87450980389999999" blue="0.68627450980000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <state key="normal" title="Verify">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -357,6 +384,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <animations/>
                                 <constraints>
                                     <constraint firstItem="FLw-Ey-heL" firstAttribute="centerX" secondItem="N0q-MG-Aec" secondAttribute="centerX" id="2N7-eC-At7"/>
                                     <constraint firstItem="N0q-MG-Aec" firstAttribute="top" secondItem="uz3-Wy-rqM" secondAttribute="bottom" constant="20" id="43F-li-ClB"/>
@@ -378,6 +406,7 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
+                        <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Nqg-x7-PcI" firstAttribute="leading" secondItem="d7S-nu-fwJ" secondAttribute="leadingMargin" constant="-16" id="07g-sD-XAg"/>
@@ -400,9 +429,4 @@
             <point key="canvasLocation" x="1329" y="-165"/>
         </scene>
     </scenes>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4"/>
-    </simulatedMetricsContainer>
 </document>

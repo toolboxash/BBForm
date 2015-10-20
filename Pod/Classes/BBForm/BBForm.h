@@ -22,6 +22,7 @@ FOUNDATION_EXPORT const unsigned char BBFormVersionString[];
 #import "BBFloatingLabelSelectField.h"
 #import "BBFloatingLabelTextView.h"
 #import "BBFloatingLabelAutoCompleteField.h"
+#import "BBFormSwitchField.h"
 
 // style helpers
 #import "BBStyleButton.h"
@@ -29,8 +30,7 @@ FOUNDATION_EXPORT const unsigned char BBFormVersionString[];
 #import "BBStyleSettings.h"
 
 // extras and utilities
-#import "BBExtras-UIActionSheet.h"
-#import "BBExtras-UIAlertView.h"
+#import "BBExtras-UIAlertController.h"
 #import "BBExtras-UIColor.h"
 #import "BBExtras-UIImage.h"
 #import "BBExtras-UIView.h"
