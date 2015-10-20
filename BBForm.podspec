@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "BBForm"
-  s.version          = "0.1.7"
+  s.version          = "0.1.8"
   s.summary          = "A simple form solution for iOS with validation"
 #  s.description      = <<-DESC
 #                       An optional longer description of BBForm
@@ -24,7 +24,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/toolboxash/BBForm.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.platform     = :ios, '7.0'
+  s.platform     = :ios, '8.0'
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/{BBFormValidation,BBForm}/**/*.{h,m}'
